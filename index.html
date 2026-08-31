@@ -10,8 +10,8 @@
    Recreated from the Claude Design export (project/Site ARCA Sorocaba.dc.html) */
 
 :root{
-  --blue:#1B45E8;
-  --blue-dark:#1533B8;
+  --blue:#1844F1;
+  --blue-dark:#1234BA;
   --blue-bright:#3E66FF;
   --navy:#0B1D3F;
   --page-bg:#071228;
@@ -226,7 +226,7 @@ main{display:block}
 .depoimentos-head{max-width:780px;margin:0 auto clamp(26px,3vw,40px);text-align:center}
 .depoimentos-head p{margin:0 auto 16px;max-width:60ch}
 .depoimentos-carousel{position:relative}
-.depoimentos-track{display:flex;gap:clamp(14px,1.6vw,22px);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;padding:4px 4px 8px}
+.depoimentos-track{display:flex;gap:clamp(14px,1.6vw,22px);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;padding:24px 4px 56px;margin:-24px -4px -56px}
 .depoimentos-track::-webkit-scrollbar{display:none}
 .depoimento-card{scroll-snap-align:start;flex:0 0 calc((100% - 2*clamp(14px,1.6vw,22px))/3);min-width:250px;background:#fff;border:1px solid var(--soft-border);border-radius:var(--r-lg);padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;transition:all .5s var(--ease)}
 .depoimento-card:hover{transform:translateY(-8px);border-color:var(--blue);box-shadow:0 24px 50px rgba(11,29,63,.12)}
@@ -378,10 +378,13 @@ main{display:block}
 
 .mural-label{display:block;text-align:center;font-family:Montserrat,sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 .mural-sub{text-align:center;margin:0 auto 22px;font-size:.96rem;color:var(--body);max-width:48ch}
-.mural-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(160px,100%),1fr));gap:12px}
-.mural-logo{position:relative;height:96px;background:#fff;border:1px solid var(--soft-border);border-radius:14px;overflow:hidden;transition:all .5s var(--ease)}
+.mural-carousel{position:relative;overflow:hidden;padding:14px 0;margin:-14px 0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 6%,#000 94%,transparent 100%)}
+.mural-track{display:flex;gap:12px;overflow-x:hidden;cursor:grab;touch-action:pan-y;-webkit-user-select:none;user-select:none;padding:10px 0;margin:-10px 0}
+.mural-track.is-dragging{cursor:grabbing}
+.mural-logo{position:relative;flex:0 0 clamp(140px,26vw,190px);height:96px;background:#fff;border:1px solid var(--soft-border);border-radius:14px;overflow:hidden;transition:border-color .5s var(--ease),transform .5s var(--ease)}
 .mural-logo:hover{border-color:var(--blue);transform:translateY(-5px)}
-.mural-logo .slot{position:absolute;inset:0;background:transparent;border:none}
+.mural-logo .slot{position:absolute;inset:0;background:transparent;border:none;pointer-events:none}
+.mural-logo img{width:100%;height:100%;object-fit:contain;pointer-events:none}
 
 /* ---------- perguntas ---------- */
 .perguntas{padding:clamp(44px,6vw,96px) clamp(18px,3.4vw,58px)}
@@ -849,13 +852,15 @@ main{display:block}
 
   <div>
     <span class="mural-label">Mural de gratidão</span>
-    <p class="mural-sub">Quem já caminha com a gente. Arraste aqui os logotipos reais dos parceiros.</p>
-    <div class="mural-grid">
-      <div class="mural-logo"><div class="slot slot--contain"><span class="slot-label">Logo do parceiro</span></div></div>
-      <div class="mural-logo"><div class="slot slot--contain"><span class="slot-label">Logo do parceiro</span></div></div>
-      <div class="mural-logo"><div class="slot slot--contain"><span class="slot-label">Logo do parceiro</span></div></div>
-      <div class="mural-logo"><div class="slot slot--contain"><span class="slot-label">Logo do parceiro</span></div></div>
-      <div class="mural-logo"><div class="slot slot--contain"><span class="slot-label">Logo do parceiro</span></div></div>
+    <p class="mural-sub">Quem já caminha com a gente. Substitua os quadros pelos logotipos reais dos parceiros — o carrossel roda sozinho e também pode ser arrastado.</p>
+    <div class="mural-carousel">
+      <div class="mural-track" id="muralTrack">
+        <div class="mural-logo"><div class="slot slot--contain"><span class="slot-label">Logo do parceiro</span></div></div>
+        <div class="mural-logo"><div class="slot slot--contain"><span class="slot-label">Logo do parceiro</span></div></div>
+        <div class="mural-logo"><div class="slot slot--contain"><span class="slot-label">Logo do parceiro</span></div></div>
+        <div class="mural-logo"><div class="slot slot--contain"><span class="slot-label">Logo do parceiro</span></div></div>
+        <div class="mural-logo"><div class="slot slot--contain"><span class="slot-label">Logo do parceiro</span></div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -977,7 +982,6 @@ main{display:block}
   </div>
   <div class="footer-bottom cf-mobile">
     <p class="c-mobile">CNPJ 19.831.448/0001-85 · ARCA Sorocaba · Todos os direitos reservados</p>
-    <p class="legal c-mobile">Site em linguagem simples, com contraste alto e tipografia legível, seguindo as diretrizes WCAG 2.1 nível AA.</p>
   </div>
 </footer>
 </div>
@@ -1141,6 +1145,71 @@ main{display:block}
     };
     depPrev.addEventListener('click', function () { scrollByCard(-1); });
     depNext.addEventListener('click', function () { scrollByCard(1); });
+  }
+
+  // ---------- mural de gratidão: carrossel infinito e arrastável ----------
+  var muralTrack = document.getElementById('muralTrack');
+  if (muralTrack) {
+    var muralOriginal = Array.prototype.slice.call(muralTrack.children);
+    muralOriginal.forEach(function (node) {
+      muralTrack.appendChild(node.cloneNode(true));
+    });
+
+    var muralSpeed = .6;
+    var muralPaused = false;
+    var muralDragging = false;
+    var muralMoved = false;
+    var muralStartX = 0;
+    var muralStartScroll = 0;
+    var muralPos = muralTrack.scrollLeft;
+
+    var muralHalfWidth = function () {
+      return muralTrack.scrollWidth / 2;
+    };
+
+    var muralStep = function () {
+      if (!muralPaused && !muralDragging) {
+        var half = muralHalfWidth();
+        muralPos += muralSpeed;
+        if (muralPos >= half) muralPos -= half;
+        muralTrack.scrollLeft = Math.round(muralPos);
+      }
+      requestAnimationFrame(muralStep);
+    };
+    requestAnimationFrame(muralStep);
+
+    var muralPointerDown = function (e) {
+      muralDragging = true;
+      muralMoved = false;
+      muralTrack.classList.add('is-dragging');
+      muralStartX = e.clientX;
+      muralStartScroll = muralPos;
+      if (muralTrack.setPointerCapture) muralTrack.setPointerCapture(e.pointerId);
+    };
+    var muralPointerMove = function (e) {
+      if (!muralDragging) return;
+      var dx = e.clientX - muralStartX;
+      if (Math.abs(dx) > 3) muralMoved = true;
+      var half = muralHalfWidth();
+      var next = muralStartScroll - dx;
+      if (next < 0) { next += half; muralStartScroll += half; }
+      else if (next >= half) { next -= half; muralStartScroll -= half; }
+      muralPos = next;
+      muralTrack.scrollLeft = Math.round(muralPos);
+    };
+    var muralPointerEnd = function () {
+      muralDragging = false;
+      muralTrack.classList.remove('is-dragging');
+    };
+
+    muralTrack.addEventListener('pointerdown', muralPointerDown);
+    muralTrack.addEventListener('pointermove', muralPointerMove);
+    muralTrack.addEventListener('pointerup', muralPointerEnd);
+    muralTrack.addEventListener('pointercancel', muralPointerEnd);
+    muralTrack.addEventListener('pointerleave', function () { if (muralDragging) muralPointerEnd(); });
+    muralTrack.addEventListener('click', function (e) { if (muralMoved) e.preventDefault(); });
+    muralTrack.addEventListener('mouseenter', function () { muralPaused = true; });
+    muralTrack.addEventListener('mouseleave', function () { muralPaused = false; });
   }
 })();
 
