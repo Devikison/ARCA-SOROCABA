@@ -223,9 +223,18 @@ main{display:block}
 .depoimentos{margin:0 clamp(8px,1vw,16px) clamp(12px,1.4vw,20px);padding:clamp(40px,5vw,86px) clamp(16px,2.6vw,48px);background:var(--soft);border-radius:var(--r-md)}
 .depoimentos-head{max-width:780px;margin:0 auto clamp(26px,3vw,40px);text-align:center}
 .depoimentos-head p{margin:0 auto 16px;max-width:60ch}
-.depoimentos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:clamp(14px,1.6vw,22px)}
-.depoimento-card{background:#fff;border:1px solid var(--soft-border);border-radius:var(--r-lg);padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:16px;transition:all .5s var(--ease)}
+.depoimentos-carousel{position:relative}
+.depoimentos-track{display:flex;gap:clamp(14px,1.6vw,22px);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;padding:4px 4px 8px}
+.depoimentos-track::-webkit-scrollbar{display:none}
+.depoimento-card{scroll-snap-align:start;flex:0 0 calc((100% - 2*clamp(14px,1.6vw,22px))/3);min-width:250px;background:#fff;border:1px solid var(--soft-border);border-radius:var(--r-lg);padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;transition:all .5s var(--ease)}
 .depoimento-card:hover{transform:translateY(-8px);border-color:var(--blue);box-shadow:0 24px 50px rgba(11,29,63,.12)}
+.depoimento-stars{color:#F5A623;font-size:1rem;letter-spacing:2px}
+.depoimentos-nav{display:flex;justify-content:center;gap:12px;margin-top:24px}
+.depoimentos-arrow{width:46px;height:46px;border-radius:14px;border:1px solid var(--soft-border);background:#fff;cursor:pointer;display:grid;place-items:center;font-size:1.15rem;color:var(--navy);transition:all .3s var(--ease)}
+.depoimentos-arrow:hover{border-color:var(--blue);color:var(--blue);background:var(--tint)}
+@media (max-width:880px){
+  .depoimento-card{flex:0 0 84%}
+}
 .depoimento-avatar{width:70px;height:70px;border-radius:50%;overflow:hidden;position:relative;flex:none;background:var(--tint)}
 .depoimento-avatar .slot{position:absolute;inset:0;background:transparent;border:none}
 .depoimento-quote{margin:0;font-size:1.05rem;line-height:1.62;color:var(--navy)}
@@ -620,22 +629,49 @@ main{display:block}
     <p class="lede">Cada acolhido tem uma trajetória única. Estes depoimentos ilustram, de forma resumida, o impacto das oficinas e do acolhimento.</p>
     <p class="badge-pill"><strong>Exemplos:</strong> substituir por depoimentos reais, com autorização</p>
   </div>
-  <div class="depoimentos-grid">
-    <article class="depoimento-card cx-mobile">
-      <div class="depoimento-avatar"><div class="slot slot--circle"><span class="slot-label">Retrato</span></div></div>
-      <p class="depoimento-quote c-mobile">"Aqui eu tenho amigos e aprendo coisas novas toda tarde."</p>
-      <div class="depoimento-who c-mobile"><strong>Exemplo · nome fictício</strong><span>participante das oficinas de arte</span></div>
-    </article>
-    <article class="depoimento-card cx-mobile">
-      <div class="depoimento-avatar"><div class="slot slot--circle"><span class="slot-label">Retrato</span></div></div>
-      <p class="depoimento-quote c-mobile">"Vi meu filho ganhar confiança e fazer amigos de verdade."</p>
-      <div class="depoimento-who c-mobile"><strong>Exemplo · depoimento de familiar</strong><span>mãe de um acolhido</span></div>
-    </article>
-    <article class="depoimento-card cx-mobile">
-      <div class="depoimento-avatar"><div class="slot slot--circle"><span class="slot-label">Retrato</span></div></div>
-      <p class="depoimento-quote c-mobile">"A oficina de música é a parte da semana que eu mais espero."</p>
-      <div class="depoimento-who c-mobile"><strong>Exemplo · nome fictício</strong><span>participante das oficinas de música</span></div>
-    </article>
+  <div class="depoimentos-carousel">
+    <div class="depoimentos-track" id="depoimentosTrack">
+      <article class="depoimento-card cx-mobile">
+        <div class="depoimento-avatar"><div class="slot slot--circle"><span class="slot-label">Retrato</span></div></div>
+        <div class="depoimento-stars" aria-label="5 de 5 estrelas">★★★★★</div>
+        <p class="depoimento-quote c-mobile">"Aqui eu tenho amigos e aprendo coisas novas toda tarde."</p>
+        <div class="depoimento-who c-mobile"><strong>Exemplo · nome fictício</strong><span>participante das oficinas de arte</span></div>
+      </article>
+      <article class="depoimento-card cx-mobile">
+        <div class="depoimento-avatar"><div class="slot slot--circle"><span class="slot-label">Retrato</span></div></div>
+        <div class="depoimento-stars" aria-label="5 de 5 estrelas">★★★★★</div>
+        <p class="depoimento-quote c-mobile">"Vi meu filho ganhar confiança e fazer amigos de verdade."</p>
+        <div class="depoimento-who c-mobile"><strong>Exemplo · depoimento de familiar</strong><span>mãe de um acolhido</span></div>
+      </article>
+      <article class="depoimento-card cx-mobile">
+        <div class="depoimento-avatar"><div class="slot slot--circle"><span class="slot-label">Retrato</span></div></div>
+        <div class="depoimento-stars" aria-label="5 de 5 estrelas">★★★★★</div>
+        <p class="depoimento-quote c-mobile">"A oficina de música é a parte da semana que eu mais espero."</p>
+        <div class="depoimento-who c-mobile"><strong>Exemplo · nome fictício</strong><span>participante das oficinas de música</span></div>
+      </article>
+      <article class="depoimento-card cx-mobile">
+        <div class="depoimento-avatar"><div class="slot slot--circle"><span class="slot-label">Retrato</span></div></div>
+        <div class="depoimento-stars" aria-label="5 de 5 estrelas">★★★★★</div>
+        <p class="depoimento-quote c-mobile">"A equipe trata cada pessoa com respeito e paciência todos os dias."</p>
+        <div class="depoimento-who c-mobile"><strong>Exemplo · depoimento de familiar</strong><span>pai de uma acolhida</span></div>
+      </article>
+      <article class="depoimento-card cx-mobile">
+        <div class="depoimento-avatar"><div class="slot slot--circle"><span class="slot-label">Retrato</span></div></div>
+        <div class="depoimento-stars" aria-label="5 de 5 estrelas">★★★★★</div>
+        <p class="depoimento-quote c-mobile">"Aprendi a cozinhar e a ajudar em casa depois que comecei na ARCA."</p>
+        <div class="depoimento-who c-mobile"><strong>Exemplo · nome fictício</strong><span>participante das oficinas de vida prática</span></div>
+      </article>
+      <article class="depoimento-card cx-mobile">
+        <div class="depoimento-avatar"><div class="slot slot--circle"><span class="slot-label">Retrato</span></div></div>
+        <div class="depoimento-stars" aria-label="5 de 5 estrelas">★★★★★</div>
+        <p class="depoimento-quote c-mobile">"É um alívio saber que a minha irmã tem um lugar seguro para crescer."</p>
+        <div class="depoimento-who c-mobile"><strong>Exemplo · depoimento de familiar</strong><span>irmã de um acolhido</span></div>
+      </article>
+    </div>
+    <div class="depoimentos-nav">
+      <button type="button" class="depoimentos-arrow" id="depoimentosPrev" aria-label="Depoimentos anteriores">←</button>
+      <button type="button" class="depoimentos-arrow" id="depoimentosNext" aria-label="Próximos depoimentos">→</button>
+    </div>
   </div>
 </section>
 
@@ -1085,6 +1121,22 @@ main{display:block}
       volunteerConfirm.classList.remove('is-visible');
       volunteerForm.classList.remove('is-hidden');
     });
+  }
+
+  // ---------- depoimentos carousel ----------
+  var depTrack = document.getElementById('depoimentosTrack');
+  var depPrev = document.getElementById('depoimentosPrev');
+  var depNext = document.getElementById('depoimentosNext');
+
+  if (depTrack && depPrev && depNext) {
+    var scrollByCard = function (dir) {
+      var card = depTrack.querySelector('.depoimento-card');
+      if (!card) return;
+      var gap = parseFloat(getComputedStyle(depTrack).columnGap) || 0;
+      depTrack.scrollBy({ left: dir * (card.getBoundingClientRect().width + gap), behavior: 'smooth' });
+    };
+    depPrev.addEventListener('click', function () { scrollByCard(-1); });
+    depNext.addEventListener('click', function () { scrollByCard(1); });
   }
 })();
 
