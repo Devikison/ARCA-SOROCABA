@@ -1133,7 +1133,15 @@ main{display:block}
       var card = depTrack.querySelector('.depoimento-card');
       if (!card) return;
       var gap = parseFloat(getComputedStyle(depTrack).columnGap) || 0;
-      depTrack.scrollBy({ left: dir * (card.getBoundingClientRect().width + gap), behavior: 'smooth' });
+      var step = card.getBoundingClientRect().width + gap;
+      var maxScroll = depTrack.scrollWidth - depTrack.clientWidth;
+      if (dir > 0 && depTrack.scrollLeft >= maxScroll - 4) {
+        depTrack.scrollTo({ left: 0, behavior: 'smooth' });
+      } else if (dir < 0 && depTrack.scrollLeft <= 4) {
+        depTrack.scrollTo({ left: maxScroll, behavior: 'smooth' });
+      } else {
+        depTrack.scrollBy({ left: dir * step, behavior: 'smooth' });
+      }
     };
     depPrev.addEventListener('click', function () { scrollByCard(-1); });
     depNext.addEventListener('click', function () { scrollByCard(1); });
