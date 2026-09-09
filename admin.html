@@ -479,6 +479,11 @@ body.admin-body{min-height:100vh;display:flex;align-items:flex-start;justify-con
 .admin-recent{background:#fff;border-radius:var(--r-xl);padding:clamp(20px,3vw,28px);box-shadow:0 18px 44px rgba(7,18,40,.1)}
 .admin-recent h2{font-family:Montserrat,sans-serif;font-weight:800;font-size:1.05rem;color:var(--navy);margin:0 0 14px}
 .admin-recent-item{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--soft-border)}
+.admin-recent-item>div{flex:1;min-width:0}
+.admin-recent-actions{display:flex;gap:14px;margin-top:6px}
+.admin-recent-actions button{background:none;border:none;padding:0;font-size:.82rem;font-weight:700;font-family:Montserrat,sans-serif;cursor:pointer;color:var(--blue)}
+.admin-recent-actions button:hover{text-decoration:underline}
+.admin-recent-actions button.is-danger{color:#B3261E}
 .admin-recent-item:first-of-type{border-top:none}
 .admin-recent-thumb{width:52px;height:52px;border-radius:10px;background:var(--tint);flex:none;object-fit:cover}
 .admin-recent-title{font-family:Montserrat,sans-serif;font-weight:700;font-size:.92rem;color:var(--navy);margin:0 0 3px}
@@ -513,10 +518,11 @@ body.admin-body{min-height:100vh;display:flex;align-items:flex-start;justify-con
 
   <section id="formView" class="admin-card" hidden>
     <div class="admin-form-head">
-      <h1 class="admin-title" style="margin:0">Nova publicação</h1>
+      <h1 class="admin-title" id="formTitle" style="margin:0">Nova publicação</h1>
       <button type="button" id="logoutBtn" class="admin-logout">Sair</button>
     </div>
     <p class="admin-lede">Preencha o título, a mensagem e, se quiser, uma foto. Ao publicar, o post já aparece no blog na hora.</p>
+    <p class="admin-hint" id="editingNotice" hidden>Editando uma publicação existente. <button type="button" id="cancelEditBtn" class="admin-logout">Cancelar edição</button></p>
 
     <div class="admin-field">
       <label for="postTitle">Título</label>
@@ -535,6 +541,7 @@ body.admin-body{min-height:100vh;display:flex;align-items:flex-start;justify-con
         <input type="file" id="postImage" accept="image/*">
         <span class="admin-hint">A foto é ajustada automaticamente para o formato 1080×1350 (retrato), com recorte a partir do centro.</span>
         <img id="postImagePreview" class="admin-preview" alt="Pré-visualização da foto selecionada">
+        <button type="button" id="removeImageBtn" class="admin-logout" hidden>Remover foto atual</button>
       </div>
     </div>
 
@@ -572,8 +579,16 @@ body.admin-body{min-height:100vh;display:flex;align-items:flex-start;justify-con
   var postBody = document.getElementById('postBody');
   var postImage = document.getElementById('postImage');
   var postImagePreview = document.getElementById('postImagePreview');
+  var removeImageBtn = document.getElementById('removeImageBtn');
   var publishBtn = document.getElementById('publishBtn');
   var formMsg = document.getElementById('formMsg');
+  var formTitle = document.getElementById('formTitle');
+  var editingNotice = document.getElementById('editingNotice');
+  var cancelEditBtn = document.getElementById('cancelEditBtn');
+
+  var editingId = null;
+  var removeImageFlag = false;
+  var recentPosts = [];
 
   function showMsg(el, text, kind) {
     el.textContent = text;
@@ -596,6 +611,56 @@ body.admin-body{min-height:100vh;display:flex;align-items:flex-start;justify-con
     loginView.hidden = false;
     loginPassword.value = '';
   }
+
+  function resetFormToCreate() {
+    editingId = null;
+    removeImageFlag = false;
+    postTitle.value = '';
+    postBody.value = '';
+    postImage.value = '';
+    selectedImageDataUrl = null;
+    postImagePreview.className = 'admin-preview';
+    postImagePreview.src = '';
+    removeImageBtn.hidden = true;
+    formTitle.textContent = 'Nova publicação';
+    publishBtn.textContent = 'Publicar no blog';
+    editingNotice.hidden = true;
+    hideMsg(formMsg);
+  }
+
+  function startEdit(post) {
+    editingId = post.id;
+    removeImageFlag = false;
+    selectedImageDataUrl = null;
+    postImage.value = '';
+    postTitle.value = post.title || '';
+    postBody.value = post.body || '';
+    if (post.image_url) {
+      postImagePreview.src = post.image_url;
+      postImagePreview.className = 'admin-preview is-visible';
+      removeImageBtn.hidden = false;
+    } else {
+      postImagePreview.className = 'admin-preview';
+      postImagePreview.src = '';
+      removeImageBtn.hidden = true;
+    }
+    formTitle.textContent = 'Editar publicação';
+    publishBtn.textContent = 'Salvar alterações';
+    editingNotice.hidden = false;
+    hideMsg(formMsg);
+    formTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  cancelEditBtn.addEventListener('click', resetFormToCreate);
+
+  removeImageBtn.addEventListener('click', function () {
+    removeImageFlag = true;
+    selectedImageDataUrl = null;
+    postImage.value = '';
+    postImagePreview.className = 'admin-preview';
+    postImagePreview.src = '';
+    removeImageBtn.hidden = true;
+  });
 
   var savedPassword = sessionStorage.getItem(SESSION_KEY);
   if (savedPassword) showForm();
@@ -630,6 +695,7 @@ body.admin-body{min-height:100vh;display:flex;align-items:flex-start;justify-con
       postImagePreview.className = 'admin-preview';
       return;
     }
+    removeImageFlag = false;
     var img = new Image();
     var reader = new FileReader();
     reader.onload = function (ev) {
@@ -658,6 +724,7 @@ body.admin-body{min-height:100vh;display:flex;align-items:flex-start;justify-con
         selectedImageExt = 'jpg';
         postImagePreview.src = selectedImageDataUrl;
         postImagePreview.className = 'admin-preview is-visible';
+        removeImageBtn.hidden = true;
       };
       img.src = ev.target.result;
     };
@@ -675,8 +742,22 @@ body.admin-body{min-height:100vh;display:flex;align-items:flex-start;justify-con
       return;
     }
 
+    var isEditing = !!editingId;
     publishBtn.disabled = true;
-    publishBtn.textContent = 'Publicando...';
+    publishBtn.textContent = isEditing ? 'Salvando...' : 'Publicando...';
+
+    var payload = {
+      password: pwd,
+      action: isEditing ? 'update' : 'create',
+      title: title,
+      body: body,
+      imageDataUrl: selectedImageDataUrl,
+      imageExt: selectedImageExt
+    };
+    if (isEditing) {
+      payload.id = editingId;
+      payload.removeImage = removeImageFlag;
+    }
 
     fetch(FUNCTION_URL, {
       method: 'POST',
@@ -685,20 +766,14 @@ body.admin-body{min-height:100vh;display:flex;align-items:flex-start;justify-con
         'apikey': SUPABASE_ANON_KEY,
         'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
       },
-      body: JSON.stringify({
-        password: pwd,
-        title: title,
-        body: body,
-        imageDataUrl: selectedImageDataUrl,
-        imageExt: selectedImageExt
-      })
+      body: JSON.stringify(payload)
     })
       .then(function (res) {
         return res.json().then(function (data) { return { ok: res.ok, data: data }; });
       })
       .then(function (result) {
         publishBtn.disabled = false;
-        publishBtn.textContent = 'Publicar no blog';
+        publishBtn.textContent = isEditing ? 'Salvar alterações' : 'Publicar no blog';
         if (!result.ok) {
           if (result.data && result.data.error === 'Senha incorreta.') {
             sessionStorage.removeItem(SESSION_KEY);
@@ -706,20 +781,16 @@ body.admin-body{min-height:100vh;display:flex;align-items:flex-start;justify-con
             showMsg(loginMsg, 'Senha incorreta. Tente novamente.', 'error');
             return;
           }
-          showMsg(formMsg, (result.data && result.data.error) || 'Não foi possível publicar. Tente novamente.', 'error');
+          showMsg(formMsg, (result.data && result.data.error) || 'Não foi possível salvar. Tente novamente.', 'error');
           return;
         }
-        showMsg(formMsg, 'Publicado! Já está no blog.', 'success');
-        postTitle.value = '';
-        postBody.value = '';
-        postImage.value = '';
-        selectedImageDataUrl = null;
-        postImagePreview.className = 'admin-preview';
+        showMsg(formMsg, isEditing ? 'Alterações salvas!' : 'Publicado! Já está no blog.', 'success');
+        resetFormToCreate();
         loadRecent();
       })
       .catch(function () {
         publishBtn.disabled = false;
-        publishBtn.textContent = 'Publicar no blog';
+        publishBtn.textContent = isEditing ? 'Salvar alterações' : 'Publicar no blog';
         showMsg(formMsg, 'Falha de conexão. Verifique a internet e tente de novo.', 'error');
       });
   });
@@ -730,8 +801,57 @@ body.admin-body{min-height:100vh;display:flex;align-items:flex-start;justify-con
     });
   }
 
+  function deletePost(id) {
+    var pwd = sessionStorage.getItem(SESSION_KEY) || '';
+    return fetch(FUNCTION_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
+      },
+      body: JSON.stringify({ password: pwd, action: 'delete', id: id })
+    }).then(function (res) {
+      return res.json().then(function (data) { return { ok: res.ok, data: data }; });
+    });
+  }
+
+  recentList.addEventListener('click', function (e) {
+    var editBtn = e.target.closest('[data-edit]');
+    var deleteBtn = e.target.closest('[data-delete]');
+
+    if (editBtn) {
+      var post = recentPosts.filter(function (p) { return p.id === editBtn.dataset.edit; })[0];
+      if (post) startEdit(post);
+      return;
+    }
+
+    if (deleteBtn) {
+      var id = deleteBtn.dataset.delete;
+      if (!window.confirm('Excluir esta publicação? Essa ação não pode ser desfeita.')) return;
+      deleteBtn.disabled = true;
+      deleteBtn.textContent = 'Excluindo...';
+      deletePost(id).then(function (result) {
+        if (!result.ok) {
+          if (result.data && result.data.error === 'Senha incorreta.') {
+            sessionStorage.removeItem(SESSION_KEY);
+            showLogin();
+            showMsg(loginMsg, 'Senha incorreta. Tente novamente.', 'error');
+            return;
+          }
+          deleteBtn.disabled = false;
+          deleteBtn.textContent = 'Excluir';
+          showMsg(formMsg, (result.data && result.data.error) || 'Não foi possível excluir.', 'error');
+          return;
+        }
+        if (editingId === id) resetFormToCreate();
+        loadRecent();
+      });
+    }
+  });
+
   function loadRecent() {
-    fetch(SUPABASE_URL + '/rest/v1/blog_posts?select=id,title,image_url,created_at&order=created_at.desc&limit=5', {
+    fetch(SUPABASE_URL + '/rest/v1/blog_posts?select=id,title,body,image_url,created_at&order=created_at.desc&limit=8', {
       headers: {
         'apikey': SUPABASE_ANON_KEY,
         'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
@@ -739,18 +859,23 @@ body.admin-body{min-height:100vh;display:flex;align-items:flex-start;justify-con
     })
       .then(function (res) { return res.json(); })
       .then(function (posts) {
-        if (!Array.isArray(posts) || posts.length === 0) {
+        recentPosts = Array.isArray(posts) ? posts : [];
+        if (recentPosts.length === 0) {
           recentList.innerHTML = '<p class="admin-hint">Nenhum post publicado ainda.</p>';
           return;
         }
-        recentList.innerHTML = posts.map(function (p) {
+        recentList.innerHTML = recentPosts.map(function (p) {
           var date = new Date(p.created_at).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
           var thumb = p.image_url
             ? '<img class="admin-recent-thumb" src="' + p.image_url + '" alt="">'
             : '<div class="admin-recent-thumb"></div>';
           return '<div class="admin-recent-item">' + thumb +
             '<div><p class="admin-recent-title">' + escapeHtml(p.title) + '</p>' +
-            '<span class="admin-recent-date">' + date + '</span></div></div>';
+            '<span class="admin-recent-date">' + date + '</span>' +
+            '<div class="admin-recent-actions">' +
+            '<button type="button" data-edit="' + p.id + '">Editar</button>' +
+            '<button type="button" class="is-danger" data-delete="' + p.id + '">Excluir</button>' +
+            '</div></div></div>';
         }).join('');
       })
       .catch(function () {
