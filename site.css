@@ -585,3 +585,32 @@ html{-webkit-text-size-adjust:100%}
   .hero-logo{margin-inline:auto}
   .hero h1,.hero p.intro{margin-inline:auto}
 }
+
+/* ---------- Como ajudar: cards de destaque ---------- */
+.help-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(20px,2.2vw,28px);padding-top:14px}
+@media (min-width:640px){.help-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1000px){.help-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.help-card{position:relative;display:flex;flex-direction:column;gap:14px;padding:clamp(26px,2.6vw,36px);background:#fff;border:1.5px solid var(--tint-border);border-top:6px solid var(--blue);border-radius:var(--r-lg);box-shadow:0 20px 44px rgba(11,29,63,.11),0 2px 6px rgba(11,29,63,.06);transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s var(--ease)}
+.help-card:hover{transform:translateY(-8px);border-color:var(--blue);box-shadow:0 32px 60px rgba(25,34,153,.22),0 2px 6px rgba(11,29,63,.06)}
+.help-icon{width:68px;height:68px;border-radius:20px;background:var(--tint);border:1px solid var(--tint-border);display:grid;place-items:center;font-size:2rem;line-height:1}
+.help-tag{align-self:flex-start;font-family:Montserrat,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.11em;text-transform:uppercase;color:var(--blue);background:var(--tint);border-radius:999px;padding:7px 14px}
+.help-card h3{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(1.35rem,1.9vw,1.6rem);line-height:1.18;letter-spacing:-.01em;color:var(--navy);margin:2px 0 0}
+.help-card p{font-size:1.03rem;line-height:1.66;color:var(--body)}
+.help-card .btn{margin-top:auto;min-height:56px;padding:0 24px;border-radius:14px;background:var(--blue);color:#fff;font-size:1rem;box-shadow:0 14px 28px rgba(25,34,153,.3)}
+.help-card .btn:hover{background:var(--blue-dark);color:#fff;transform:translateY(-3px)}
+.help-pix{display:block;padding:12px 16px;background:var(--soft);border:1.5px dashed var(--tint-border);border-radius:12px;font-family:Montserrat,sans-serif;font-weight:800;font-size:1.02rem;color:var(--navy)}
+.help-pix small{display:block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.help-badge{position:absolute;top:-16px;right:20px;background:#F5A623;color:#3a2600;font-family:Montserrat,sans-serif;font-weight:800;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;border-radius:999px;box-shadow:0 8px 18px rgba(245,166,35,.4)}
+.help-card--featured{background:linear-gradient(160deg,var(--blue) 0%,var(--navy) 100%);border-color:var(--blue);border-top-color:var(--on-navy-accent);box-shadow:0 26px 56px rgba(25,34,153,.38)}
+.help-card--featured:hover{box-shadow:0 36px 70px rgba(25,34,153,.5)}
+.help-card--featured h3{color:#fff}
+.help-card--featured p{color:var(--tint-border)}
+.help-card--featured .help-icon{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.25)}
+.help-card--featured .help-tag{background:rgba(255,255,255,.16);color:#fff}
+.help-card--featured .btn{background:#fff;color:var(--blue);box-shadow:0 14px 28px rgba(0,0,0,.28)}
+.help-card--featured .btn:hover{background:#fff;color:var(--blue-dark)}
+@media (max-width:600px){
+  .help-card{padding:26px 22px}
+  .help-badge{right:16px}
+  .help-card .btn{width:100%}
+}
