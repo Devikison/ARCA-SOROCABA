@@ -515,10 +515,6 @@ a.post-card{text-decoration:none;cursor:pointer}
 .pagination .is-disabled{opacity:.4;pointer-events:none}
 .pagination .is-gap{border:none;color:var(--muted)}
 
-/* ---------- botão de doação fixo (todas as páginas) ---------- */
-.doe-float{position:fixed;left:20px;bottom:20px;z-index:90;min-height:54px;display:inline-flex;align-items:center;gap:10px;padding:0 26px;border-radius:999px;background:var(--blue);color:#fff;font-family:Montserrat,sans-serif;font-weight:800;font-size:.92rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;box-shadow:0 14px 32px rgba(7,18,40,.34);transition:all .35s var(--ease)}
-.doe-float:hover{background:var(--blue-dark);transform:translateY(-3px);color:#fff}
-@media (max-width:600px){.doe-float{left:14px;bottom:14px;min-height:50px;padding:0 22px}}
 .nav-link[aria-current="page"]{background:var(--tint);color:var(--blue)}
 .mobile-nav a[aria-current="page"]{background:var(--tint);color:var(--blue)}
 .mobile-nav a.mobile-doar{background:var(--blue);color:#fff}
@@ -533,12 +529,16 @@ a.post-card{text-decoration:none;cursor:pointer}
 @media (max-width:380px){
   .site-header{gap:8px;padding:8px 12px}
   .brand{gap:8px}
-  .brand img{height:40px}
-  .brand-name{font-size:.86rem}
+  .brand img{height:36px}
+  .brand-name{font-size:.8rem}
   .brand-sub{display:none}
   .nav-compact{gap:8px}
-  .nav-compact-doar{padding:0 14px;min-height:44px}
+  .nav-compact-doar{padding:0 12px;min-height:44px;font-size:.86rem}
   .menu-btn{width:44px;height:44px}
+}
+@media (max-width:340px){
+  .brand-name{font-size:.76rem}
+  .site-header{padding:8px 10px}
 }
 
 </style>
@@ -684,7 +684,6 @@ a.post-card{text-decoration:none;cursor:pointer}
   </div>
 </footer>
 
-<a class="doe-float" href="index.html#doar">Doe agora</a>
 <a class="whatsapp-float" href="https://wa.me/5515991142594?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20ARCA%20Sorocaba." target="_blank" rel="noopener" aria-label="Falar no WhatsApp com a ARCA Sorocaba">
   <svg viewBox="0 0 32 32" fill="#fff" aria-hidden="true"><path d="M16.001 3C9.096 3 3.5 8.597 3.5 15.5c0 2.44.697 4.717 1.903 6.65L3 29l7.03-2.36a12.44 12.44 0 0 0 5.97 1.52h.005c6.905 0 12.5-5.597 12.5-12.5S22.906 3 16.001 3Zm0 22.7h-.004a10.16 10.16 0 0 1-5.176-1.42l-.372-.22-3.86 1.297 1.33-3.712-.243-.386A10.14 10.14 0 0 1 5.86 15.5c0-5.598 4.552-10.15 10.145-10.15 2.71 0 5.257 1.058 7.174 2.98a10.08 10.08 0 0 1 2.972 7.176c0 5.598-4.553 10.194-10.15 10.194Zm5.57-7.61c-.305-.153-1.807-.892-2.087-.994-.28-.102-.484-.153-.687.153-.204.305-.79.993-.969 1.198-.178.204-.357.23-.662.076-.305-.153-1.288-.475-2.453-1.514-.907-.809-1.52-1.808-1.698-2.113-.178-.305-.019-.47.134-.622.137-.137.305-.357.458-.535.153-.178.204-.305.306-.51.102-.204.05-.383-.026-.535-.076-.153-.687-1.656-.942-2.27-.248-.596-.5-.515-.687-.524l-.585-.01c-.204 0-.535.076-.815.383-.28.305-1.068 1.044-1.068 2.546s1.093 2.953 1.245 3.157c.153.204 2.15 3.283 5.208 4.604.728.314 1.296.502 1.739.642.73.232 1.394.199 1.92.121.586-.087 1.807-.739 2.062-1.452.255-.713.255-1.324.178-1.452-.076-.128-.28-.204-.586-.357Z"/></svg>
 </a>
