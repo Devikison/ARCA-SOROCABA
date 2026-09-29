@@ -384,6 +384,18 @@ main{display:block}
 .mobile-nav a[aria-current="page"]{background:var(--tint);color:var(--blue)}
 .mobile-nav a.mobile-doar{background:var(--blue);color:#fff}
 
+/* cabeçalho em celulares muito estreitos: nome inteiro, sem cortar */
+@media (max-width:380px){
+  .site-header{gap:8px;padding:8px 12px}
+  .brand{gap:8px}
+  .brand img{height:40px}
+  .brand-name{font-size:.86rem}
+  .brand-sub{display:none}
+  .nav-compact{gap:8px}
+  .nav-compact-doar{padding:0 14px;min-height:44px}
+  .menu-btn{width:44px;height:44px}
+}
+
 /* ---------- páginas internas ---------- */
 .page-hero{padding:clamp(34px,5vw,72px) clamp(18px,3.4vw,58px) clamp(22px,3vw,40px)}
 .page-hero h1{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(1.9rem,3.5vw,3.3rem);line-height:1.1;letter-spacing:-.022em;color:var(--navy);margin:0 0 18px;max-width:26ch;text-wrap:balance}
@@ -475,3 +487,101 @@ main{display:block}
 .footer-map iframe{display:block;width:100%;height:220px;border:0}
 .footer-links .copy-link{background:none;border:none;padding:0;color:var(--on-navy);font-size:.98rem;cursor:pointer;text-align:left;transition:all .45s var(--ease)}
 .footer-links .copy-link:hover{color:#fff;transform:translateX(4px)}
+
+/* ---------- home longa: texto à esquerda, foto à direita ---------- */
+section[id]{scroll-margin-top:96px}
+html{-webkit-text-size-adjust:100%}
+.sec{padding:0 clamp(18px,3.4vw,58px) clamp(48px,6.5vw,104px)}
+.sec--soft{margin:0 clamp(8px,1vw,16px) clamp(24px,3vw,44px);padding:clamp(44px,5.5vw,92px) clamp(16px,2.6vw,48px);background:var(--soft);border-radius:var(--r-md)}
+.sec-head{max-width:760px;margin:0 0 clamp(24px,3vw,40px)}
+.sec-head .lede{max-width:62ch}
+.split{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,72px);align-items:center}
+@media (min-width:900px){.split{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}}
+.split-text{text-align:left;min-width:0}
+.split-text .h2{max-width:22ch}
+.split-text p{font-size:1.05rem;line-height:1.72;color:var(--body);margin:0 0 16px;max-width:60ch;text-wrap:pretty}
+.split-text p strong{color:var(--navy)}
+.split-text .btn{margin-top:8px}
+.split-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
+.split-actions .btn{margin-top:0}
+.split-text .hero-ctas{margin-top:10px}
+@media (max-width:600px){
+  .split-actions .btn,.split-text>.btn{width:100%;white-space:normal;text-align:center}
+}
+.photo-slot{position:relative;margin:0;width:100%;aspect-ratio:4/5;max-height:640px;border-radius:var(--r-lg);overflow:hidden;background:linear-gradient(155deg,#EEF3FF 0%,#DCE6FF 100%);border:1.5px dashed var(--tint-border);display:flex;align-items:center;justify-content:center;text-align:center;padding:18px}
+@media (max-width:899px){.photo-slot{aspect-ratio:4/3;max-height:420px}}
+.photo-slot.is-wide{aspect-ratio:16/9;max-height:none}
+.photo-slot-label{font-size:.9rem;line-height:1.45;color:var(--muted);max-width:26ch}
+.photo-slot-label::before{content:"";display:block;width:38px;height:38px;margin:0 auto 12px;border-radius:10px;background:#fff;border:1px solid var(--tint-border)}
+.photo-slot-label small{display:block;margin-top:8px;font-size:.72rem;letter-spacing:.02em;color:var(--on-navy-muted);word-break:break-all;color:#7d8fb0}
+.photo-slot.has-photo{border:none;padding:0;background:var(--soft)}
+.photo-slot.has-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block}
+.split--navy{background:var(--navy);border-radius:var(--r-md);padding:clamp(24px,4vw,60px)}
+.split--navy .eyebrow{background:rgba(255,255,255,.08);border:none;color:var(--on-navy-accent)}
+.split--navy .h2{color:#fff}
+.split--navy .split-text p{color:var(--on-navy)}
+.split--navy .btn{background:#fff;color:var(--blue)}
+.split--navy .btn:hover{color:var(--blue-dark);transform:translateY(-3px)}
+.split--navy .photo-slot{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.22)}
+.split--navy .photo-slot-label{color:var(--on-navy)}
+.split--navy .photo-slot-label::before{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)}
+.tile-grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(14px,1.6vw,22px)}
+.destinos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px;margin-top:clamp(28px,3.4vw,48px)}
+.destinos .destino-row{margin-bottom:0}
+.sub-block{margin-top:clamp(32px,4vw,56px)}
+.contact-split .map-frame iframe{height:clamp(300px,38vw,520px)}
+@media (min-width:900px){.contact-split{align-items:start}}
+
+/* ---------- ajustes de celular e tablet ---------- */
+.doe-float{bottom:calc(20px + env(safe-area-inset-bottom))}
+.whatsapp-float{bottom:calc(20px + env(safe-area-inset-bottom))}
+@media (max-width:900px){
+  .site-footer{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+}
+@media (max-width:600px){
+  .doe-float{left:14px;bottom:calc(14px + env(safe-area-inset-bottom))}
+  .whatsapp-float{bottom:calc(14px + env(safe-area-inset-bottom))}
+  .page-hero,.sec,.block{padding-left:16px;padding-right:16px}
+  .sec--soft{padding-left:16px;padding-right:16px}
+  .split-text .h2{max-width:none}
+  .hero h1{max-width:none}
+}
+@media (max-width:360px){
+  .doe-float{padding:0 16px;font-size:.82rem}
+  .opt-btn{padding:0 10px}
+}
+
+/* ---------- refinos de grade ---------- */
+@media (min-width:900px){.card-grid--3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.destinos{grid-template-columns:minmax(0,1fr)}
+@media (min-width:600px){
+  .destinos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .destinos .destino-row:last-child:nth-child(odd){grid-column:1/-1}
+}
+@media (min-width:1100px){
+  .destinos{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .destinos .destino-row:last-child:nth-child(odd){grid-column:auto}
+}
+.destinos .destino-row{flex-direction:column;gap:12px;padding:20px}
+.contact-split .contact-list{margin:6px 0 22px}
+.contact-split .form-panel{align-self:start}
+.contact-split + .map-frame{margin-top:clamp(28px,3.4vw,48px)}
+.map-frame iframe{height:clamp(280px,32vw,460px)}
+@media (max-width:600px){
+  .split-actions{flex-direction:column}
+  .split-actions .btn{width:100%}
+  .tile{padding:22px 20px}
+}
+
+/* botões com rótulo longo quebram linha em telas estreitas (sem estourar a largura) */
+.btn{max-width:100%}
+@media (max-width:600px){
+  .btn{white-space:normal;text-align:center;line-height:1.25;padding-top:12px;padding-bottom:12px}
+  .page-hero .btn,.prose .btn,.block .btn:not(.btn-secondary){width:100%}
+}
+
+/* topo da home centralizado de forma consistente em celular e tablet */
+@media (max-width:880px){
+  .hero-logo{margin-inline:auto}
+  .hero h1,.hero p.intro{margin-inline:auto}
+}

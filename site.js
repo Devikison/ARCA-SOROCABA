@@ -180,4 +180,23 @@
       if (done) done.classList.add('is-visible');
     });
   });
+  // ---------- fotos: salve assets/fotos/<nome>.jpg (ou .webp/.png) e ela aparece no espaço ----------
+  document.querySelectorAll('.photo-slot[data-foto]').forEach(function (slot) {
+    var name = slot.getAttribute('data-foto');
+    var alt = slot.getAttribute('data-alt') || '';
+    var exts = ['jpg', 'webp', 'png'];
+    (function tryNext(i) {
+      if (i >= exts.length) return;
+      var img = new Image();
+      img.onload = function () {
+        slot.innerHTML = '';
+        img.alt = alt;
+        img.loading = 'lazy';
+        slot.appendChild(img);
+        slot.classList.add('has-photo');
+      };
+      img.onerror = function () { tryNext(i + 1); };
+      img.src = 'assets/fotos/' + name + '.' + exts[i];
+    })(0);
+  });
 })();

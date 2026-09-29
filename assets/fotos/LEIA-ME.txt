@@ -1,0 +1,14 @@
+FOTOS DA HOME
+=============
+Para colocar uma foto num espaço da home, basta salvar o arquivo nesta pasta
+com o nome abaixo (.jpg, .webp ou .png). Ela aparece sozinha, sem mexer no código.
+
+  quem-somos.jpg      -> seção "Quem somos"
+  acolhidos.jpg       -> seção "Quem a ARCA acolhe" (oficinas e convivência)
+  videos.jpg          -> imagem de capa da seção de vídeos (formato horizontal 16:9)
+  guardiao.jpg        -> chamada do Guardião Mensal
+  transparencia.jpg   -> seção "Transparência"
+
+Dicas: fotos verticais (4:5) ou quadradas funcionam melhor; use até ~300 KB
+por foto para o site abrir rápido no celular. Imagens dos acolhidos: sem
+coitadismo ou pena, tom de convivência, alegria e autonomia.
