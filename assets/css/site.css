@@ -454,7 +454,6 @@ main{display:block}
 .photo-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:clamp(14px,1.6vw,22px)}
 .photo-row .media-slot{aspect-ratio:4/3}
 .stats-panel--three{grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr))}
-.hero-logo{width:clamp(74px,8vw,104px);height:auto;margin:0 0 6px}
 .hero-ctas .btn{white-space:normal;text-align:center}
 
 /* ---------- doação (home) ---------- */
@@ -585,8 +584,7 @@ html{-webkit-text-size-adjust:100%}
 
 /* topo da home centralizado de forma consistente em celular e tablet */
 @media (max-width:880px){
-  .hero-logo{margin-inline:auto}
-  .hero h1,.hero p.intro{margin-inline:auto}
+    .hero h1,.hero p.intro{margin-inline:auto}
 }
 
 /* ---------- Como ajudar: cards de destaque ---------- */
