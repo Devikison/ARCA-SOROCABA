@@ -18,7 +18,9 @@ O link da bio (Instagram) fica em outro repositório: `arca-sorocaba-link-bio`.
 ├── CNAME               Domínio do site
 └── assets/
     ├── css/site.css    Estilos compartilhados (home e Guardião; o blog tem estilos próprios inline)
+    ├── css/header.css  Animação da barra superior (some ao descer, volta ao subir)
     ├── js/site.js      Menu, doação, PIX, formulários, contagem dos números, fotos
+    ├── js/header.js    Esconde/mostra a barra superior ao rolar a página
     ├── img/            Logo (barquinha), favicon e foto do topo
     └── fotos/          Fotos da home (veja abaixo)
 ```
