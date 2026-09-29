@@ -1,21 +1,10 @@
-<!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Jornal da ARCA | ARCA Sorocaba</title>
-<meta name="description" content="Leia esta edição do Jornal da ARCA Sorocaba.">
-<link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-<style>
-/* ARCA Sorocaba: site styles
-   Recreated from the Claude Design export (project/Site ARCA Sorocaba.dc.html) */
+
+/* ARCA Sorocaba: estilos compartilhados por todas as páginas */
 
 :root{
-  --blue:#1B45E8;
-  --blue-dark:#1533B8;
-  --blue-bright:#3E66FF;
+  --blue:#192299;
+  --blue-dark:#141B77;
+  --blue-bright:#5960B6;
   --navy:#0B1D3F;
   --page-bg:#071228;
   --tint:#EEF3FF;
@@ -120,6 +109,9 @@ main{display:block}
   .c-mobile p,.c-mobile h1,.c-mobile h2,.c-mobile h3,.c-mobile .eyebrow{margin-inline:auto}
   .cf-mobile{justify-content:center}
   .cx-mobile{align-items:center}
+  .rotina-cta{justify-content:center}
+  .rotina-cta .btn{margin-inline:auto}
+  .footer-brand.c-mobile img{margin-inline:auto}
 }
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}html{scroll-behavior:auto}}
 
@@ -185,65 +177,6 @@ main{display:block}
 .infolist-row:hover{background:var(--tint);padding-left:28px}
 .infolist-row strong{font-family:Montserrat,sans-serif;font-weight:800;color:var(--blue);min-width:96px;font-size:.98rem}
 .infolist-row span{font-size:1rem;line-height:1.58;color:var(--body)}
-
-/* ---------- rotina ---------- */
-.rotina{padding:0 clamp(18px,3.4vw,58px) clamp(44px,6vw,96px)}
-.rotina-head{max-width:760px;margin:0 auto clamp(28px,3.4vw,44px);text-align:center}
-.rotina-head p{margin:0 auto 16px;max-width:62ch}
-.badge-pill{margin:0 auto;display:inline-block;padding:12px 20px;background:var(--tint);border:1px solid var(--tint-border);border-radius:14px;font-size:.94rem;line-height:1.5;color:var(--blue)}
-.badge-pill strong{font-family:Montserrat,sans-serif;font-weight:800}
-
-.rotina-panel{background:var(--navy);border-radius:var(--r-md);overflow:hidden}
-.rotina-list{padding:clamp(14px,1.6vw,22px) clamp(14px,1.8vw,26px)}
-.rotina-item{display:flex;align-items:center;gap:clamp(14px,1.8vw,26px);padding:clamp(16px,1.8vw,24px) clamp(6px,1vw,14px);border-bottom:1px solid var(--on-navy-line);transition:all .5s var(--ease)}
-.rotina-item:hover{background:rgba(255,255,255,.05);padding-left:26px}
-.rotina-item:last-child{border-bottom:none}
-.rotina-num{flex:none;width:52px;height:52px;border-radius:13px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;font-family:Montserrat,sans-serif;font-weight:800;color:var(--on-navy-accent);font-size:.98rem}
-.rotina-item strong{display:block;font-family:Montserrat,sans-serif;font-weight:700;font-size:clamp(1.02rem,1.4vw,1.24rem);color:#fff;margin-bottom:5px}
-.rotina-item span{font-size:.99rem;line-height:1.55;color:var(--on-navy)}
-
-.rotina-cta{background:var(--blue);padding:clamp(20px,2.4vw,30px) clamp(20px,2.6vw,36px);display:flex;flex-wrap:wrap;gap:18px 26px;align-items:center;justify-content:space-between}
-.rotina-cta strong{display:block;font-family:Montserrat,sans-serif;font-weight:700;font-size:clamp(1.1rem,1.6vw,1.4rem);color:#fff;margin-bottom:4px}
-.rotina-cta span{font-size:1rem;color:var(--tint-border)}
-.rotina-cta .btn{min-height:54px;gap:12px;padding:0 26px;border-radius:14px;background:#fff;color:var(--blue);font-size:1rem}
-.rotina-cta .btn:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(7,18,40,.28);color:var(--blue-dark)}
-.rotina-cta .btn-icon{background:var(--tint)}
-
-/* ---------- nossos espaços ---------- */
-.espacos{padding:0 clamp(18px,3.4vw,58px) clamp(44px,6vw,96px)}
-.espacos-head{max-width:760px;margin-bottom:clamp(26px,3vw,40px)}
-.espacos-head p{max-width:60ch}
-.espacos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:clamp(14px,1.6vw,22px)}
-.espaco-card{margin:0;border:1px solid var(--soft-border);border-radius:var(--r-lg);padding:14px;transition:all .5s var(--ease)}
-.espaco-card:hover{transform:translateY(-8px);border-color:var(--blue);box-shadow:0 24px 50px rgba(11,29,63,.14)}
-.espaco-photo{position:relative;aspect-ratio:4/3;border-radius:13px;overflow:hidden;background:var(--soft)}
-.espaco-photo .slot{position:absolute;inset:0;background:transparent;border:none}
-.espaco-card figcaption{padding:16px 6px 6px}
-.espaco-card figcaption strong{font-family:Montserrat,sans-serif;font-weight:700;color:var(--navy);display:block;margin-bottom:5px}
-.espaco-card figcaption span{font-size:.95rem;line-height:1.55;color:var(--body)}
-
-/* ---------- depoimentos ---------- */
-.depoimentos{margin:0 clamp(8px,1vw,16px) clamp(12px,1.4vw,20px);padding:clamp(40px,5vw,86px) clamp(16px,2.6vw,48px);background:var(--soft);border-radius:var(--r-md)}
-.depoimentos-head{max-width:780px;margin:0 auto clamp(26px,3vw,40px);text-align:center}
-.depoimentos-head p{margin:0 auto 16px;max-width:60ch}
-.depoimentos-carousel{position:relative}
-.depoimentos-track{display:flex;gap:clamp(14px,1.6vw,22px);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;padding:4px 4px 8px}
-.depoimentos-track::-webkit-scrollbar{display:none}
-.depoimento-card{scroll-snap-align:start;flex:0 0 calc((100% - 2*clamp(14px,1.6vw,22px))/3);min-width:250px;background:#fff;border:1px solid var(--soft-border);border-radius:var(--r-lg);padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;transition:all .5s var(--ease)}
-.depoimento-card:hover{transform:translateY(-8px);border-color:var(--blue);box-shadow:0 24px 50px rgba(11,29,63,.12)}
-.depoimento-stars{color:#F5A623;font-size:1rem;letter-spacing:2px}
-.depoimentos-nav{display:flex;justify-content:center;gap:12px;margin-top:24px}
-.depoimentos-arrow{width:46px;height:46px;border-radius:14px;border:1px solid var(--soft-border);background:#fff;cursor:pointer;display:grid;place-items:center;font-size:1.15rem;color:var(--navy);transition:all .3s var(--ease)}
-.depoimentos-arrow:hover{border-color:var(--blue);color:var(--blue);background:var(--tint)}
-@media (max-width:880px){
-  .depoimento-card{flex:0 0 84%}
-}
-.depoimento-avatar{width:70px;height:70px;border-radius:50%;overflow:hidden;position:relative;flex:none;background:var(--tint)}
-.depoimento-avatar .slot{position:absolute;inset:0;background:transparent;border:none}
-.depoimento-quote{margin:0;font-size:1.05rem;line-height:1.62;color:var(--navy)}
-.depoimento-who{margin-top:auto}
-.depoimento-who strong{font-family:Montserrat,sans-serif;font-weight:700;color:var(--blue);display:block;font-size:.98rem}
-.depoimento-who span{font-size:.9rem;color:var(--body)}
 
 /* ---------- transparência ---------- */
 .transparencia{padding:clamp(44px,6vw,96px) clamp(18px,3.4vw,58px)}
@@ -377,13 +310,6 @@ main{display:block}
 .empresa-item strong{display:block;font-family:Montserrat,sans-serif;font-weight:800;color:var(--navy);font-size:1.06rem;margin-bottom:6px}
 .empresa-item span{font-size:.99rem;color:var(--body);line-height:1.58}
 
-.mural-label{display:block;text-align:center;font-family:Montserrat,sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.mural-sub{text-align:center;margin:0 auto 22px;font-size:.96rem;color:var(--body);max-width:48ch}
-.mural-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(160px,100%),1fr));gap:12px}
-.mural-logo{position:relative;height:96px;background:#fff;border:1px solid var(--soft-border);border-radius:14px;overflow:hidden;transition:all .5s var(--ease)}
-.mural-logo:hover{border-color:var(--blue);transform:translateY(-5px)}
-.mural-logo .slot{position:absolute;inset:0;background:transparent;border:none}
-
 /* ---------- perguntas ---------- */
 .perguntas{padding:clamp(44px,6vw,96px) clamp(18px,3.4vw,58px)}
 .perguntas-inner{max-width:900px;margin-inline:auto}
@@ -450,56 +376,6 @@ main{display:block}
 @media (max-width:600px){.whatsapp-float{right:26px;bottom:14px;width:54px;height:54px}.whatsapp-float svg{width:27px;height:27px}}
 
 
-/* ---------- blog ---------- */
-.blog-hero{padding-top:clamp(30px,4vw,54px);padding-bottom:6px}
-.blog-hero .lede{max-width:64ch}
-.blog-notice{margin:22px 0 0;padding:16px 20px;background:var(--tint);border:1px solid var(--tint-border);border-radius:var(--r-md);color:var(--body);font-size:.95rem;line-height:1.6;max-width:64ch}
-.blog-notice strong{color:var(--navy)}
-.posts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(20px,2.4vw,30px);margin-top:clamp(28px,3vw,40px);padding-bottom:clamp(40px,5vw,70px)}
-.post-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--soft-border);border-radius:var(--r-xl);overflow:hidden;transition:all .45s var(--ease)}
-.post-card:hover{transform:translateY(-4px);box-shadow:0 22px 44px rgba(7,18,40,.14);border-color:var(--tint-border)}
-.post-thumb{position:relative;height:170px;background:linear-gradient(135deg,var(--blue) 0%,var(--blue-bright) 100%);display:flex;align-items:flex-end;padding:16px}
-.post-tag{display:inline-flex;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.22);color:#fff;font-family:Montserrat,sans-serif;font-weight:700;font-size:.76rem;letter-spacing:.02em;text-transform:uppercase}
-.post-example-badge{position:absolute;top:14px;right:14px;background:#fff;color:var(--navy);font-family:Montserrat,sans-serif;font-weight:700;font-size:.7rem;padding:4px 10px;border-radius:999px}
-.post-body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
-.post-date{font-size:.82rem;color:var(--muted);font-weight:600}
-.post-title{font-family:Montserrat,sans-serif;font-weight:800;font-size:1.14rem;line-height:1.32;color:var(--navy)}
-.post-excerpt{font-size:.94rem;line-height:1.58;color:var(--body);flex:1}
-.post-link{display:inline-flex;align-items:center;gap:8px;font-family:Montserrat,sans-serif;font-weight:700;font-size:.92rem;color:var(--blue);text-decoration:none}
-.post-link:hover{color:var(--blue-dark);gap:12px}
-.blog-empty{margin-top:clamp(28px,3vw,40px);padding:clamp(24px,3vw,34px);background:var(--soft);border:1px dashed var(--soft-border);border-radius:var(--r-xl);color:var(--body);font-size:.96rem;line-height:1.62;max-width:64ch}
-
-a.post-card{text-decoration:none;cursor:pointer}
-.post-card[aria-disabled="true"]{cursor:default}
-
-/* ---------- newsletter ---------- */
-.newsletter-card{background:linear-gradient(135deg,var(--navy) 0%,#132b5c 100%);border-radius:var(--r-xl);padding:clamp(26px,3.6vw,44px);display:flex;flex-wrap:wrap;gap:clamp(20px,3vw,32px);align-items:center;justify-content:space-between;margin-top:clamp(24px,3vw,34px)}
-.newsletter-copy{flex:1 1 280px;min-width:0}
-.newsletter-copy h2{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(1.2rem,2vw,1.5rem);color:#fff;margin:0 0 8px}
-.newsletter-copy p{color:var(--on-navy);font-size:.96rem;line-height:1.58;margin:0;max-width:46ch}
-.newsletter-form{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:10px}
-.newsletter-row{display:flex;flex-wrap:wrap;gap:10px}
-.newsletter-row input{flex:1 1 160px;min-width:0;min-height:50px;border-radius:12px;border:1px solid var(--on-navy-line);background:rgba(255,255,255,.08);color:#fff;padding:0 16px;font-family:'Poppins',sans-serif;font-size:.94rem}
-.newsletter-row input::placeholder{color:var(--on-navy-muted)}
-.newsletter-row input:focus{outline:2px solid var(--blue-bright);outline-offset:1px;background:rgba(255,255,255,.13)}
-.newsletter-form button{min-height:50px;border:none;border-radius:12px;background:var(--blue);color:#fff;font-family:Montserrat,sans-serif;font-weight:700;font-size:.94rem;cursor:pointer;transition:all .35s var(--ease)}
-.newsletter-form button:hover{background:var(--blue-dark);transform:translateY(-2px)}
-.newsletter-form button:disabled{opacity:.7;cursor:default;transform:none}
-.newsletter-msg{font-size:.86rem;line-height:1.5;min-height:0}
-.newsletter-msg.is-success{color:#8FE3AC}
-.newsletter-msg.is-error{color:#FFB4AC}
-
-/* ---------- post detail ---------- */
-.post-detail{padding-top:clamp(30px,4vw,54px);padding-bottom:clamp(40px,5vw,70px)}
-.post-detail-back{display:inline-flex;align-items:center;gap:8px;font-family:Montserrat,sans-serif;font-weight:700;font-size:.9rem;color:var(--blue);text-decoration:none;margin-bottom:22px}
-.post-detail-back:hover{gap:12px;color:var(--blue-dark)}
-.post-detail-tag{display:inline-flex;padding:6px 14px;border-radius:999px;background:var(--tint);color:var(--blue);font-family:Montserrat,sans-serif;font-weight:700;font-size:.76rem;letter-spacing:.02em;text-transform:uppercase;margin-bottom:14px}
-.post-detail-date{display:block;font-size:.86rem;color:var(--muted);font-weight:600;margin-bottom:10px}
-.post-detail-title{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.16;color:var(--navy);margin:0 0 22px;max-width:26ch}
-.post-detail-image{width:100%;max-width:420px;aspect-ratio:1080/1350;border-radius:var(--r-xl);margin:0 auto 30px;display:block;object-fit:cover}
-.post-detail-body{font-size:1.04rem;line-height:1.75;color:var(--body);white-space:pre-wrap;max-width:72ch}
-.post-detail-loading,.post-detail-error{color:var(--body);font-size:.98rem}
-
 /* ---------- botão de doação fixo (todas as páginas) ---------- */
 .doe-float{position:fixed;left:20px;bottom:20px;z-index:90;min-height:54px;display:inline-flex;align-items:center;gap:10px;padding:0 26px;border-radius:999px;background:var(--blue);color:#fff;font-family:Montserrat,sans-serif;font-weight:800;font-size:.92rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;box-shadow:0 14px 32px rgba(7,18,40,.34);transition:all .35s var(--ease)}
 .doe-float:hover{background:var(--blue-dark);transform:translateY(-3px);color:#fff}
@@ -508,203 +384,94 @@ a.post-card{text-decoration:none;cursor:pointer}
 .mobile-nav a[aria-current="page"]{background:var(--tint);color:var(--blue)}
 .mobile-nav a.mobile-doar{background:var(--blue);color:#fff}
 
-</style>
-<!-- RASTREAMENTO: colar aqui o Pixel / Tag do Google (responsável: Douglas) -->
-</head>
-<body>
-<a href="#conteudo" class="skip-link">Ir para o conteúdo</a>
+/* ---------- páginas internas ---------- */
+.page-hero{padding:clamp(34px,5vw,72px) clamp(18px,3.4vw,58px) clamp(22px,3vw,40px)}
+.page-hero h1{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(1.9rem,3.5vw,3.3rem);line-height:1.1;letter-spacing:-.022em;color:var(--navy);margin:0 0 18px;max-width:26ch;text-wrap:balance}
+.page-hero h1 em{color:var(--blue);font-style:normal}
+.page-hero .lede{max-width:66ch}
+.page-hero .btn{margin-top:26px}
+.block{padding:0 clamp(18px,3.4vw,58px) clamp(40px,5.5vw,84px)}
+.block-head{max-width:760px;margin-bottom:clamp(22px,3vw,36px)}
+.block-head .lede{max-width:62ch}
+.block--soft{margin:0 clamp(8px,1vw,16px) clamp(12px,1.4vw,20px);padding:clamp(40px,5vw,80px) clamp(16px,2.6vw,48px);background:var(--soft);border-radius:var(--r-md)}
+.prose p{font-size:1.05rem;line-height:1.72;color:var(--body);margin:0 0 16px;max-width:66ch;text-wrap:pretty}
+.prose p strong{color:var(--navy)}
+.prose .btn{margin-top:10px}
+.two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr));gap:clamp(26px,3.5vw,56px);align-items:start}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:clamp(14px,1.6vw,22px)}
+.tile{background:#fff;border:1px solid var(--soft-border);border-radius:var(--r-lg);padding:clamp(22px,2.4vw,30px);display:flex;flex-direction:column;gap:12px;transition:all .5s var(--ease)}
+.tile:hover{transform:translateY(-6px);border-color:var(--blue);box-shadow:0 24px 50px rgba(11,29,63,.12)}
+.tile h3{font-family:Montserrat,sans-serif;font-weight:800;font-size:1.2rem;color:var(--navy)}
+.tile p{font-size:1rem;line-height:1.62;color:var(--body)}
+.tile .btn{margin-top:auto;min-height:52px;padding:0 22px;border-radius:14px}
+.tile--featured{background:var(--navy);border-color:var(--navy)}
+.tile--featured h3{color:#fff}
+.tile--featured p{color:var(--on-navy)}
+.tile-num{width:46px;height:46px;border-radius:12px;background:var(--tint);color:var(--blue);display:grid;place-items:center;font-family:Montserrat,sans-serif;font-weight:800;font-size:.92rem}
+.tile--featured .tile-num{background:var(--blue);color:#fff}
+.tile .pix-inline{display:block;font-family:Montserrat,sans-serif;font-weight:800;font-size:.95rem;color:var(--navy);word-break:normal}
+.btn-copy{min-height:52px;padding:0 22px;border:1px solid var(--navy);border-radius:14px;background:transparent;color:var(--navy);font-family:Montserrat,sans-serif;font-weight:700;font-size:.98rem;cursor:pointer;transition:all .45s var(--ease)}
+.btn-copy:hover{background:var(--navy);color:#fff}
+.copied-msg{display:none;margin:0;font-size:.92rem;color:var(--blue);line-height:1.5}
+.copied-msg.is-visible{display:block}
+.check-list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.check-list li{position:relative;padding-left:36px;font-size:1.03rem;line-height:1.64;color:var(--body)}
+.check-list li strong{color:var(--navy)}
+.check-list li::before{content:"✓";position:absolute;left:0;top:1px;width:25px;height:25px;border-radius:50%;background:var(--tint);color:var(--blue);display:grid;place-items:center;font-weight:800;font-size:.85rem}
+.check-list.is-no li::before{content:"✕";background:#FDECEC;color:#B42318}
+.cta-panel{background:var(--navy);border-radius:var(--r-md);padding:clamp(28px,4vw,56px);display:flex;flex-wrap:wrap;gap:22px 34px;align-items:center;justify-content:space-between}
+.cta-panel h2{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(1.4rem,2.4vw,2.1rem);line-height:1.15;letter-spacing:-.015em;color:#fff;max-width:26ch;margin:0 0 10px}
+.cta-panel p{color:var(--on-navy);font-size:1.03rem;line-height:1.62;max-width:56ch}
+.cta-panel .btn{min-height:58px;padding:0 30px;border-radius:14px;background:#fff;color:var(--blue);font-size:1.02rem;white-space:normal;text-align:center}
+.cta-panel .btn:hover{transform:translateY(-3px);color:var(--blue-dark);box-shadow:0 18px 34px rgba(7,18,40,.28)}
+.quote-line{font-family:Montserrat,sans-serif;font-weight:700;font-style:italic;font-size:clamp(1.1rem,1.7vw,1.45rem);color:var(--blue);line-height:1.4;margin:28px 0 0}
+.pix-line{display:flex;flex-wrap:wrap;gap:8px 22px;margin:20px 0 0;font-size:1rem;color:var(--body)}
+.pix-line strong{color:var(--navy);font-family:Montserrat,sans-serif}
+.tag-note{display:inline-block;margin:0 0 18px;padding:10px 16px;background:var(--tint);border:1px solid var(--tint-border);border-radius:12px;font-size:.92rem;line-height:1.5;color:var(--blue)}
+.media-slot{position:relative;aspect-ratio:16/9;border-radius:var(--r-lg);overflow:hidden;background:var(--soft);border:1px solid var(--soft-border)}
+.media-slot .slot{position:absolute;inset:0;background:transparent;border:none}
+.media-caption{margin:16px 0 0;font-size:1.02rem;line-height:1.6;color:var(--body);font-style:italic}
+.photo-frame{margin:0;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--soft-border)}
+.photo-frame img{width:100%;height:100%;max-height:560px;object-fit:cover;object-position:center 30%}
+.photo-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:clamp(14px,1.6vw,22px)}
+.photo-row .media-slot{aspect-ratio:4/3}
+.stats-panel--three{grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr))}
+.hero-logo{width:clamp(74px,8vw,104px);height:auto;margin:0 0 6px}
+.hero-ctas .btn{white-space:normal;text-align:center}
 
-<div class="page">
-<div class="card">
+/* ---------- doação (home) ---------- */
+.doar-wrap{padding:0 clamp(18px,3.4vw,58px) clamp(40px,5.5vw,84px)}
+.doar-wrap .doar{border:2px solid var(--blue);box-shadow:0 30px 70px rgba(25,34,153,.14)}
+.doar-other{display:none;margin:0 0 18px}
+.doar-other.is-visible{display:block}
+.doar-other input{width:100%;min-height:56px;padding:0 18px;border:1px solid var(--tint-border);border-radius:12px;background:#fff;color:var(--navy);font-size:1.02rem}
+.doar-other input:focus{border-color:var(--blue)}
+.doar-cta{margin-top:20px;width:100%;min-height:60px;white-space:normal;text-align:center}
+.secure-note{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 0 0;font-size:.92rem;color:var(--muted);text-align:center;line-height:1.45}
+.doar-aviso{margin:14px 0 0;font-size:.9rem;line-height:1.55;color:var(--muted)}
+.pix-or{margin:0;font-size:.96rem;color:var(--on-navy);line-height:1.55}
 
-<header class="site-header" id="topo">
-  <a href="index.html" class="brand">
-    <img src="assets/logo.png" alt="ARCA Sorocaba">
-    <span class="brand-text">
-      <strong class="brand-name">ARCA Sorocaba</strong>
-      <span class="brand-sub">Guardiã da Dignidade</span>
-    </span>
-  </a>
+/* ---------- formulários (envio pelo WhatsApp) ---------- */
+.field textarea{width:100%;min-height:130px;padding:14px 18px;border:1px solid var(--tint-border);border-radius:12px;background:#fff;color:var(--navy);font-size:1.02rem;resize:vertical;transition:all .45s var(--ease)}
+.field textarea:hover,.field textarea:focus{border-color:var(--blue)}
+.form-panel{background:var(--soft);border:1px solid var(--soft-border);border-radius:clamp(14px,1.4vw,20px);padding:clamp(24px,2.8vw,36px)}
+.form-panel h3{font-family:Montserrat,sans-serif;font-weight:800;font-size:1.32rem;color:var(--navy);margin:0 0 8px}
+.form-panel .form-lead{margin:0 0 20px;font-size:.98rem;line-height:1.58;color:var(--body)}
+.form-done{display:none;margin:16px 0 0;padding:15px 18px;background:var(--tint);border:1px solid var(--tint-border);border-radius:13px;color:var(--blue);font-size:.98rem;line-height:1.55}
+.form-done.is-visible{display:block}
 
-  <nav aria-label="Navegação principal" class="nav-full">
-    <a href="quem-somos.html" class="nav-link">A ARCA</a>
-    <a href="guardiao.html" class="nav-link">Guardião Mensal</a>
-    <a href="como-ajudar.html" class="nav-link">Como ajudar</a>
-    <a href="transparencia.html" class="nav-link">Transparência</a>
-    <a href="blog.html" class="nav-link" aria-current="page">Jornal da ARCA</a>
-    <a href="contato.html" class="nav-link">Contato</a>
-    <a href="index.html#doar" class="nav-cta">Fazer doação</a>
-  </nav>
+/* ---------- contato ---------- */
+.contact-list{display:grid;gap:0;border:1px solid var(--soft-border);border-radius:var(--r-lg);overflow:hidden;background:#fff}
+.contact-row{padding:18px 22px;border-bottom:1px solid var(--soft-border)}
+.contact-row:last-child{border-bottom:none}
+.contact-row span:first-child{display:block;font-family:Montserrat,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.contact-row span:last-child,.contact-row a{font-size:1.03rem;line-height:1.5;color:var(--navy)}
+.map-frame{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--soft-border);background:var(--soft)}
+.map-frame iframe{display:block;width:100%;height:clamp(300px,42vw,440px);border:0}
+.map-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
 
-  <div class="nav-compact">
-    <a href="index.html#doar" class="nav-compact-doar">Doar</a>
-    <button type="button" id="menuToggle" class="menu-btn" aria-label="Abrir e fechar o menu" aria-expanded="false" aria-controls="mobileNav">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<nav aria-label="Navegação" class="mobile-nav" id="mobileNav">
-  <a href="quem-somos.html">A ARCA</a>
-  <a href="guardiao.html">Guardião Mensal</a>
-  <a href="como-ajudar.html">Como ajudar</a>
-  <a href="transparencia.html">Transparência</a>
-  <a href="blog.html" aria-current="page">Jornal da ARCA</a>
-  <a href="contato.html">Contato</a>
-  <a href="index.html#doar" class="mobile-doar">Fazer doação</a>
-</nav>
-
-<main id="conteudo">
-
-
-<section class="section post-detail" aria-label="Publicação do blog">
-  <a href="blog.html" class="post-detail-back">← Voltar para o Jornal da ARCA</a>
-
-  <div id="postLoading" class="post-detail-loading">Carregando publicação...</div>
-  <div id="postError" class="post-detail-error" hidden>Não foi possível encontrar essa publicação. <a href="blog.html">Voltar para o Jornal da ARCA</a>.</div>
-
-  <article id="postContent" hidden>
-    <span class="post-detail-date" id="postDate"></span>
-    <h1 class="post-detail-title" id="postTitle"></h1>
-    <img id="postImage" class="post-detail-image" alt="" hidden>
-    <p class="post-detail-body" id="postBody"></p>
-    <a href="blog.html" class="post-detail-back" style="margin-top:12px">← Voltar para o Jornal da ARCA</a>
-  </article>
-
-</section>
-
-</main>
-</div>
-
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div class="footer-brand c-mobile">
-      <img src="assets/logo.png" alt="ARCA Sorocaba">
-      <p>Associação Beneficente Amigos da Arca de Sorocaba. Acolhemos pessoas adultas com deficiência intelectual há mais de 10 anos.</p>
-    </div>
-    <nav class="footer-nav c-mobile" aria-label="Institucional">
-      <h3>A ARCA</h3>
-      <div class="footer-links cx-mobile">
-        <a href="index.html">Início</a>
-        <a href="quem-somos.html">Quem somos</a>
-        <a href="transparencia.html">Transparência</a>
-        <a href="blog.html">Jornal da ARCA</a>
-      </div>
-    </nav>
-    <nav class="footer-nav c-mobile" aria-label="Apoie a ARCA">
-      <h3>Apoie a ARCA</h3>
-      <div class="footer-links cx-mobile">
-        <a href="guardiao.html">Guardião Mensal</a>
-        <a href="index.html#doar">Doar agora</a>
-        <a href="como-ajudar.html">Como ajudar</a>
-        <a href="como-ajudar.html#voluntariado">Seja voluntário</a>
-      </div>
-    </nav>
-    <nav class="footer-nav c-mobile" aria-label="Contato">
-      <h3>Contato</h3>
-      <div class="footer-links cx-mobile">
-        <a href="https://www.google.com/maps/dir/?api=1&destination=Av.+Santos+Dumont,+100,+Jardim+Ana+Maria,+Sorocaba+-+SP,+18065-290" target="_blank" rel="noopener">Av. Santos Dumont, 100<br>Jardim Ana Maria, Sorocaba/SP<br>CEP 18065-290</a>
-        <a href="https://wa.me/5515991142594?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20ARCA%20Sorocaba." target="_blank" rel="noopener">WhatsApp (15) 99114-2594</a>
-        <a href="https://www.instagram.com/arca_sorocaba/" target="_blank" rel="noopener">Instagram @arca_sorocaba</a>
-        <a href="https://www.google.com/maps/search/?api=1&query=ARCA+Sorocaba+Av.+Santos+Dumont+100+Sorocaba+SP" target="_blank" rel="noopener">Perfil no Google</a>
-        <span>PIX (CNPJ) 19.831.448/0001-85</span>
-      </div>
-    </nav>
-  </div>
-  <div class="footer-bottom cf-mobile">
-    <p class="c-mobile">ARCA Sorocaba · ABAAS · CNPJ 19.831.448/0001-85</p>
-    <p class="legal c-mobile">“A doação é a linguagem mais linda do amor.”</p>
-  </div>
-</footer>
-
-<a class="doe-float" href="index.html#doar">Doe agora</a>
-<a class="whatsapp-float" href="https://wa.me/5515991142594?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20ARCA%20Sorocaba." target="_blank" rel="noopener" aria-label="Falar no WhatsApp com a ARCA Sorocaba">
-  <svg viewBox="0 0 32 32" fill="#fff" aria-hidden="true"><path d="M16.001 3C9.096 3 3.5 8.597 3.5 15.5c0 2.44.697 4.717 1.903 6.65L3 29l7.03-2.36a12.44 12.44 0 0 0 5.97 1.52h.005c6.905 0 12.5-5.597 12.5-12.5S22.906 3 16.001 3Zm0 22.7h-.004a10.16 10.16 0 0 1-5.176-1.42l-.372-.22-3.86 1.297 1.33-3.712-.243-.386A10.14 10.14 0 0 1 5.86 15.5c0-5.598 4.552-10.15 10.145-10.15 2.71 0 5.257 1.058 7.174 2.98a10.08 10.08 0 0 1 2.972 7.176c0 5.598-4.553 10.194-10.15 10.194Zm5.57-7.61c-.305-.153-1.807-.892-2.087-.994-.28-.102-.484-.153-.687.153-.204.305-.79.993-.969 1.198-.178.204-.357.23-.662.076-.305-.153-1.288-.475-2.453-1.514-.907-.809-1.52-1.808-1.698-2.113-.178-.305-.019-.47.134-.622.137-.137.305-.357.458-.535.153-.178.204-.305.306-.51.102-.204.05-.383-.026-.535-.076-.153-.687-1.656-.942-2.27-.248-.596-.5-.515-.687-.524l-.585-.01c-.204 0-.535.076-.815.383-.28.305-1.068 1.044-1.068 2.546s1.093 2.953 1.245 3.157c.153.204 2.15 3.283 5.208 4.604.728.314 1.296.502 1.739.642.73.232 1.394.199 1.92.121.586-.087 1.807-.739 2.062-1.452.255-.713.255-1.324.178-1.452-.076-.128-.28-.204-.586-.357Z"/></svg>
-</a>
-</div>
-
-
-
-
-<script>
-(function () {
-  'use strict';
-
-  var menuToggle = document.getElementById('menuToggle');
-  var mobileNav = document.getElementById('mobileNav');
-
-  function closeMenu() {
-    mobileNav.classList.remove('is-open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-  }
-
-  if (menuToggle && mobileNav) {
-    menuToggle.addEventListener('click', function () {
-      var isOpen = mobileNav.classList.toggle('is-open');
-      menuToggle.setAttribute('aria-expanded', String(isOpen));
-    });
-    mobileNav.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', closeMenu);
-    });
-    window.addEventListener('resize', function () {
-      if (window.innerWidth > 1120) closeMenu();
-    });
-  }
-
-  // ---------- carrega o post pelo id na URL ----------
-  var SUPABASE_URL = 'https://hhpusblaclszengjizxe.supabase.co';
-  var SUPABASE_ANON_KEY = 'sb_publishable_dG9jTiRwUAXjpbEwvGJ5yQ_gCbmC3ch';
-
-  var postLoading = document.getElementById('postLoading');
-  var postError = document.getElementById('postError');
-  var postContent = document.getElementById('postContent');
-  var postDate = document.getElementById('postDate');
-  var postTitle = document.getElementById('postTitle');
-  var postImage = document.getElementById('postImage');
-  var postBody = document.getElementById('postBody');
-
-  function showError() {
-    postLoading.hidden = true;
-    postError.hidden = false;
-  }
-
-  var id = new URLSearchParams(window.location.search).get('id');
-
-  if (!id) {
-    showError();
-  } else {
-    fetch(SUPABASE_URL + '/rest/v1/blog_posts?select=title,body,image_url,created_at&id=eq.' + encodeURIComponent(id), {
-      headers: {
-        'apikey': SUPABASE_ANON_KEY,
-        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
-      }
-    })
-      .then(function (res) { return res.json(); })
-      .then(function (rows) {
-        if (!Array.isArray(rows) || rows.length === 0) {
-          showError();
-          return;
-        }
-        var p = rows[0];
-        var date = new Date(p.created_at).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
-
-        postDate.textContent = date;
-        postTitle.textContent = p.title;
-        postBody.textContent = p.body;
-        document.title = p.title + ' | Jornal da ARCA';
-
-        if (p.image_url) {
-          postImage.src = p.image_url;
-          postImage.alt = p.title;
-          postImage.hidden = false;
-        }
-
-        postLoading.hidden = true;
-        postContent.hidden = false;
-      })
-      .catch(showError);
-  }
-})();
-</script>
-</body>
-</html>
+/* ---------- rodapé com mapa ---------- */
+.footer-map{margin-top:28px;border-radius:14px;overflow:hidden;border:1px solid var(--on-navy-line)}
+.footer-map iframe{display:block;width:100%;height:220px;border:0}
+.footer-links .copy-link{background:none;border:none;padding:0;color:var(--on-navy);font-size:.98rem;cursor:pointer;text-align:left;transition:all .45s var(--ease)}
+.footer-links .copy-link:hover{color:#fff;transform:translateX(4px)}
