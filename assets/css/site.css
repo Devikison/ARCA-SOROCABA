@@ -139,7 +139,7 @@ main{display:block}
 .hero-badges{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:28px}
 .hero-badges span{display:inline-flex;align-items:center;gap:9px;font-size:.92rem;color:var(--body)}
 .hero-badges span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue);flex:none}
-.hero-visual{position:relative;min-height:clamp(360px,44vw,600px);border-radius:clamp(14px,1.4vw,20px);overflow:hidden;background:url('assets/hero.jpg') center 30%/cover no-repeat,linear-gradient(155deg,#EEF3FF 0%,#DCE6FF 55%,#C9D8FF 100%) center/cover;border:1px solid var(--tint-border);box-shadow:0 30px 70px rgba(11,29,63,.14)}
+.hero-visual{position:relative;min-height:clamp(360px,44vw,600px);border-radius:clamp(14px,1.4vw,20px);overflow:hidden;background:url('../img/hero.jpg') center 30%/cover no-repeat,linear-gradient(155deg,#EEF3FF 0%,#DCE6FF 55%,#C9D8FF 100%) center/cover;border:1px solid var(--tint-border);box-shadow:0 30px 70px rgba(11,29,63,.14)}
 
 @media (max-width:880px){
   .hero-grid{grid-template-columns:minmax(0,1fr)}
