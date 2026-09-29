@@ -523,6 +523,12 @@ a.post-card{text-decoration:none;cursor:pointer}
 .mobile-nav a[aria-current="page"]{background:var(--tint);color:var(--blue)}
 .mobile-nav a.mobile-doar{background:var(--blue);color:#fff}
 
+/* marca: o subtexto ocupa exatamente a largura do nome */
+.brand-text{font-size:1.2rem;align-items:stretch}
+.brand-name{font-size:1em;overflow:visible;text-overflow:clip}
+.brand-sub{width:0;min-width:100%;margin-top:3px;font-size:.55em;font-weight:600;letter-spacing:.055em;text-align:justify;text-align-last:justify;text-overflow:clip;overflow:visible}
+@media (max-width:600px){.brand-text{font-size:1rem}}
+
 /* cabeçalho em celulares muito estreitos: nome inteiro, sem cortar */
 @media (max-width:380px){
   .site-header{gap:8px;padding:8px 12px}

@@ -384,6 +384,12 @@ main{display:block}
 .mobile-nav a[aria-current="page"]{background:var(--tint);color:var(--blue)}
 .mobile-nav a.mobile-doar{background:var(--blue);color:#fff}
 
+/* marca: o subtexto ocupa exatamente a largura do nome */
+.brand-text{font-size:1.2rem;align-items:stretch}
+.brand-name{font-size:1em;overflow:visible;text-overflow:clip}
+.brand-sub{width:0;min-width:100%;margin-top:3px;font-size:.55em;font-weight:600;letter-spacing:.055em;text-align:justify;text-align-last:justify;text-overflow:clip;overflow:visible}
+@media (max-width:600px){.brand-text{font-size:1rem}}
+
 /* cabeçalho em celulares muito estreitos: nome inteiro, sem cortar */
 @media (max-width:380px){
   .site-header{gap:8px;padding:8px 12px}
@@ -614,3 +620,53 @@ html{-webkit-text-size-adjust:100%}
   .help-badge{right:16px}
   .help-card .btn{width:100%}
 }
+
+/* ---------- números da ARCA: centralizados, com contagem animada ---------- */
+.stats-panel--three{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:clamp(30px,4vw,56px) clamp(16px,3vw,40px)}
+.stats-panel--three .stat{position:relative;text-align:center;padding:0 clamp(12px,2vw,32px)}
+.stats-panel--three .stat:hover{transform:none}
+.stats-panel--three .stat + .stat::before{content:"";position:absolute;left:0;top:10%;bottom:10%;width:1px;background:var(--on-navy-line)}
+.stats-panel--three .stat strong{font-size:clamp(2.3rem,4.2vw,3.5rem);font-variant-numeric:tabular-nums;letter-spacing:-.02em;white-space:nowrap}
+.stats-panel--three .stat span{max-width:24ch;margin:10px auto 0;font-size:clamp(.95rem,1.2vw,1.05rem);line-height:1.45}
+@media (max-width:700px){
+  .stats-panel--three{grid-template-columns:minmax(0,1fr);gap:30px}
+  .stats-panel--three .stat + .stat::before{left:22%;right:22%;top:-15px;bottom:auto;width:auto;height:1px}
+}
+/* entrada suave (só quando o JavaScript está ativo) */
+.stats-ready .stat{opacity:0;transform:translateY(14px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.stats-ready.is-in .stat{opacity:1;transform:none}
+.stats-ready.is-in .stat:nth-child(2){transition-delay:.15s}
+.stats-ready.is-in .stat:nth-child(3){transition-delay:.3s}
+@media (prefers-reduced-motion:reduce){.stats-ready .stat{opacity:1;transform:none;transition:none}}
+
+/* ---------- área de doação em 3 passos ---------- */
+.doar-left{min-width:0}
+.doar-step-label{display:flex;align-items:center;gap:10px;font-size:.78rem !important}
+.doar-step-label b,.pix-step-label b{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;font-size:.8rem;letter-spacing:0}
+.pix-step-label{display:flex;align-items:center;gap:10px;font-size:.78rem}
+.pix-step-label b{background:#fff;color:var(--blue)}
+.doar-options .opt-btn,.doar-values .opt-btn{min-height:56px}
+.doar-resumo{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 18px;border-radius:14px;background:rgba(255,255,255,.1);border:1px solid var(--on-navy-line)}
+.doar-resumo span{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--on-navy-muted);font-family:Montserrat,sans-serif;font-weight:700}
+.doar-resumo strong{font-family:Montserrat,sans-serif;font-weight:800;font-size:1.25rem;color:#fff}
+.pix-method{display:flex;flex-direction:column;gap:12px}
+.pix-method-title{font-family:Montserrat,sans-serif;font-weight:800;font-size:1.1rem;color:#fff}
+.pix-method-title em{font-style:normal;font-weight:600;font-size:.86rem;color:var(--on-navy-accent)}
+.pix-steps{margin:0;padding-left:22px;display:grid;gap:8px;color:var(--tint-border);font-size:.98rem;line-height:1.5}
+.pix-steps li::marker{color:var(--on-navy-accent);font-weight:800}
+.pix-steps strong{color:#fff}
+.pix-mensal{margin:0;padding:12px 14px;border-radius:12px;background:rgba(245,166,35,.14);border:1px solid rgba(245,166,35,.4);color:#FFE2A8;font-size:.92rem;line-height:1.5;display:none}
+.pix-mensal.is-visible{display:block}
+.pix-divider{display:flex;align-items:center;gap:14px;color:var(--on-navy-muted);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase}
+.pix-divider::before,.pix-divider::after{content:"";flex:1;height:1px;background:var(--on-navy-line)}
+.pix-alt{display:flex;flex-direction:column;gap:10px}
+.btn-ghost{min-height:54px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px 20px;border-radius:14px;border:1.5px solid rgba(255,255,255,.4);color:#fff;font-family:Montserrat,sans-serif;font-weight:700;font-size:.98rem;text-decoration:none;transition:all .45s var(--ease)}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff;color:#fff;transform:translateY(-2px)}
+.pix-note{margin:0;font-size:.86rem;line-height:1.5;color:var(--on-navy-muted);text-align:center}
+.pix-card .pix-footer{margin-top:0}
+
+.doar-info{margin-top:22px;padding:18px 20px;border-left:4px solid var(--blue);background:var(--soft);border-radius:0 14px 14px 0;display:grid;gap:6px}
+.doar-info strong{font-family:Montserrat,sans-serif;font-weight:800;font-size:1.02rem;color:var(--navy);line-height:1.35}
+.doar-info span{font-size:.98rem;line-height:1.55;color:var(--body)}
+.doar-info a{font-family:Montserrat,sans-serif;font-weight:700;font-size:.95rem;color:var(--blue);text-decoration:none;margin-top:2px}
+.doar-info a:hover{text-decoration:underline}

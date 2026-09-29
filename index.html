@@ -83,18 +83,18 @@
 
 <div class="doar-wrap">
   <div id="doar" class="doar">
-    <div class="c-mobile">
-      <h3>Faça a sua doação em menos de um minuto</h3>
-      <p class="doar-desc">Escolha entre doar uma vez ou todo mês, defina o valor e conclua pelo PIX ou pelo WhatsApp da ARCA. Qualquer valor ajuda.</p>
+    <div class="doar-left">
+      <h3>Faça a sua doação</h3>
+      <p class="doar-desc">Em 3 passos simples: escolha o tipo, o valor e como quer doar. Qualquer valor ajuda.</p>
 
-      <span class="doar-step-label">1. Tipo de doação</span>
-      <div class="doar-options cf-mobile" role="group" aria-label="Tipo de doação">
-        <button type="button" class="opt-btn" data-freq="unica" aria-pressed="false">Doação única</button>
-        <button type="button" class="opt-btn is-active" data-freq="mensal" aria-pressed="true">Doação mensal</button>
+      <span class="doar-step-label"><b>1</b> Tipo de doação</span>
+      <div class="doar-options" role="group" aria-label="Tipo de doação">
+        <button type="button" class="opt-btn" data-freq="unica" aria-pressed="false">Doar uma vez</button>
+        <button type="button" class="opt-btn is-active" data-freq="mensal" aria-pressed="true">Doar todo mês</button>
       </div>
 
-      <span class="doar-step-label">2. Valor</span>
-      <div class="doar-values cf-mobile" role="group" aria-label="Valor da doação">
+      <span class="doar-step-label"><b>2</b> Valor</span>
+      <div class="doar-values" role="group" aria-label="Valor da doação">
         <button type="button" class="opt-btn is-active" data-valor="30" aria-pressed="true">R$ 30</button>
         <button type="button" class="opt-btn" data-valor="60" aria-pressed="false">R$ 60</button>
         <button type="button" class="opt-btn" data-valor="100" aria-pressed="false">R$ 100</button>
@@ -102,26 +102,50 @@
         <button type="button" class="opt-btn" data-valor="0" aria-pressed="false">Outro valor</button>
       </div>
       <div class="doar-other" id="doarOther">
-        <input type="text" id="doarOtherInput" inputmode="decimal" placeholder="Digite o valor em reais" aria-label="Outro valor, em reais">
+        <input type="text" id="doarOtherInput" inputmode="decimal" placeholder="Digite o valor em reais, ex.: 45" aria-label="Outro valor, em reais">
       </div>
       <p class="impacto-text" id="impactoText">Com R$ 30 você mantém um dia de oficina.</p>
 
-      <a href="https://wa.me/5515991142594" id="doarWhatsBtn" class="btn btn-primary doar-cta" target="_blank" rel="noopener">Quero ajudar a ARCA</a>
-      <p class="secure-note"><span aria-hidden="true">🔒</span> Pagamento seguro: o PIX cai direto na conta da ARCA.</p>
-      <p class="doar-aviso">A doação com cartão ainda não está disponível. Por enquanto, use o PIX ao lado ou avise a ARCA pelo WhatsApp.</p>
+      <div class="doar-info">
+        <strong>Manter a ARCA custa cerca de R$ 30 mil por mês.</strong>
+        <span>Toda doação, de qualquer valor, ajuda a manter esta casa de portas abertas.</span>
+        <a href="#transparencia">Para onde vai a doação →</a>
+      </div>
     </div>
 
     <div class="pix-card" data-pix-scope>
-      <span class="pix-step-label">Ou doe agora pelo PIX</span>
-      <div class="pix-key">
-        <span class="pix-key-label">Chave PIX oficial · CNPJ</span>
-        <strong class="pix-key-value">19.831.448/0001-85</strong>
+      <span class="pix-step-label"><b>3</b> Escolha como doar</span>
+
+      <div class="doar-resumo" aria-live="polite">
+        <span>Sua doação</span>
+        <strong id="doarResumo">R$ 30 por mês</strong>
       </div>
-      <button type="button" class="pix-copy-btn" data-pix-copy>Copiar chave PIX</button>
-      <p role="status" class="pix-copied" data-pix-msg>Chave copiada. Obrigado por apoiar a ARCA. Agora abra o app do seu banco, escolha PIX, cole a chave e confirme o valor.</p>
+
+      <div class="pix-method">
+        <span class="pix-method-title">Pelo PIX <em>(recomendado)</em></span>
+        <ol class="pix-steps">
+          <li>Copie a chave PIX da ARCA (é o CNPJ da associação).</li>
+          <li>No app do seu banco, escolha <strong>PIX</strong> e cole a chave.</li>
+          <li>Digite o valor <strong id="pixValor">R$ 30</strong> e confirme.</li>
+        </ol>
+        <p class="pix-mensal" id="pixMensal">Para doar todo mês, agende o PIX no app do seu banco ou repita a doação a cada mês.</p>
+        <div class="pix-key">
+          <span class="pix-key-label">Chave PIX · CNPJ</span>
+          <strong class="pix-key-value">19.831.448/0001-85</strong>
+        </div>
+        <button type="button" class="pix-copy-btn" data-pix-copy>Copiar chave PIX</button>
+        <p role="status" class="pix-copied" data-pix-msg>Chave copiada. Agora é só colar no app do seu banco.</p>
+      </div>
+
+      <div class="pix-divider"><span>ou</span></div>
+
+      <div class="pix-alt">
+        <a href="https://wa.me/5515991142594" id="doarWhatsBtn" class="btn-ghost" target="_blank" rel="noopener">Combinar a doação pelo WhatsApp</a>
+        <p class="pix-note">Doação com cartão de crédito: ainda não está disponível.</p>
+      </div>
+
       <div class="pix-footer">
         <p>Associação Beneficente Amigos da Arca de Sorocaba (ABAAS).</p>
-        <a href="#transparencia">Para onde vai a doação</a>
       </div>
     </div>
   </div>
@@ -171,16 +195,16 @@
 
 <section class="stats" aria-label="A ARCA em números">
   <div class="stats-panel stats-panel--three">
-    <div class="stat c-mobile">
-      <strong>+10 anos</strong>
+    <div class="stat">
+      <strong data-count="10" data-prefix="+" data-suffix=" anos">+10 anos</strong>
       <span>de trabalho contínuo em Sorocaba</span>
     </div>
-    <div class="stat c-mobile">
+    <div class="stat">
       <strong>Adultos</strong>
       <span>com deficiência intelectual acolhidos</span>
     </div>
-    <div class="stat c-mobile">
-      <strong>5,0</strong>
+    <div class="stat">
+      <strong data-count="5" data-decimals="1">5,0</strong>
       <span>de nota no Google</span>
     </div>
   </div>

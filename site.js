@@ -106,9 +106,18 @@
     }
 
     function refresh() {
+      var v = currentValue();
+      var mensal = state.freq === 'mensal';
       impactoText.textContent = IMPACTOS[state.valor] || IMPACTOS.other;
       otherWrap.classList.toggle('is-visible', state.valor === 0);
+      var resumo = document.getElementById('doarResumo');
+      var pixValor = document.getElementById('pixValor');
+      var pixMensal = document.getElementById('pixMensal');
+      if (resumo) resumo.textContent = v > 0 ? fmt(v) + (mensal ? ' por mês' : ' (doação única)') : 'Escolha um valor';
+      if (pixValor) pixValor.textContent = v > 0 ? fmt(v) : 'que você escolheu';
+      if (pixMensal) pixMensal.classList.toggle('is-visible', mensal);
     }
+    otherInput.addEventListener('input', refresh);
 
     freqButtons.forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -199,4 +208,40 @@
       img.src = 'assets/fotos/' + name + '.' + exts[i];
     })(0);
   });
+  // ---------- números da ARCA: contam de zero até o valor final quando entram na tela ----------
+  var statsPanel = document.querySelector('.stats-panel');
+  if (statsPanel) {
+    var counters = statsPanel.querySelectorAll('[data-count]');
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var fmtNum = function (v, d) { return v.toFixed(d).replace('.', ','); };
+    var showValue = function (el, v) {
+      var d = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      el.textContent = (el.getAttribute('data-prefix') || '') + fmtNum(v, d) + (el.getAttribute('data-suffix') || '');
+    };
+    var runCounter = function (el) {
+      var end = parseFloat(el.getAttribute('data-count'));
+      var start = null;
+      var dur = 1800;
+      var step = function (t) {
+        if (start === null) start = t;
+        var p = Math.min((t - start) / dur, 1);
+        showValue(el, end * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    if ('IntersectionObserver' in window && !reduced) {
+      statsPanel.classList.add('stats-ready');
+      counters.forEach(function (el) { showValue(el, 0); });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          io.disconnect();
+          statsPanel.classList.add('is-in');
+          counters.forEach(runCounter);
+        });
+      }, { threshold: 0.45 });
+      io.observe(statsPanel);
+    }
+  }
 })();
