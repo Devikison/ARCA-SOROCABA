@@ -376,7 +376,7 @@ main{display:block}
 @media (max-width:600px){.whatsapp-float{right:26px;bottom:14px;width:54px;height:54px}.whatsapp-float svg{width:27px;height:27px}}
 
 
-@media (max-width:600px){.nav-link[aria-current="page"]{background:var(--tint);color:var(--blue)}
+.nav-link[aria-current="page"]{background:var(--tint);color:var(--blue)}
 .mobile-nav a[aria-current="page"]{background:var(--tint);color:var(--blue)}
 .mobile-nav a.mobile-doar{background:var(--blue);color:#fff}
 
