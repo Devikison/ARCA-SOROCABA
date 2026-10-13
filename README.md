@@ -52,7 +52,7 @@ Tom das imagens: convivência, alegria e autonomia, nunca coitadismo ou pena.
 | Item | Valor |
 |------|-------|
 | CNPJ / chave PIX | 19.831.448/0001-85 |
-| WhatsApp | (15) 99114-2594 (`https://wa.me/5515991142594`) |
+| WhatsApp | (15) 99712-4769 (`https://wa.me/5515997124769`) |
 | Endereço | Av. Santos Dumont, 100, Jardim Ana Maria, Sorocaba/SP, CEP 18065-290 |
 | Instagram | @arca_sorocaba |
 | Bazar | terça a sexta, 14h às 17h |
@@ -63,9 +63,13 @@ O número do WhatsApp aparece nos links `wa.me` e em `assets/js/site.js` (consta
 
 ## Pendências de conteúdo
 
-- Vídeos dos acolhidos e 2 avaliações reais do Google (nome de quem escreveu): espaços marcados "a inserir".
-- História da ARCA (Silvia) e apresentação da equipe: avisos "Em breve".
-- Documentos da Transparência (estatuto, comprovante de CNPJ, balanço): "A publicar".
+Os blocos que dependem de conteúdo da ARCA ficam **escondidos** (comentados no HTML) para não aparecer
+anotação interna no site. Procure por `PENDENTE` no código para reativar cada um quando o conteúdo chegar.
+
+- Vídeos dos acolhidos e 2 avaliações reais do Google (nome de quem escreveu): `guardiao.html`.
+- História da ARCA (Silvia) e apresentação da equipe: `index.html`.
+- Documentos da Transparência (estatuto, comprovante de CNPJ, balanço): `index.html`. Salvar os PDFs em `assets/docs/`.
+- Fotos da home sem arquivo aparecem com o logo em marca d'água (sem texto), até a foto ser salva em `assets/fotos/`.
 - Valores de doação de R$ 60, 100 e 200: só o de R$ 30 tem significado definido ("um dia de oficina").
 - Doação com cartão recorrente: depende de contratar um gateway de pagamento. Enquanto isso, PIX + WhatsApp.
 - Pixel / rastreamento (Douglas): procurar o comentário `RASTREAMENTO` no `<head>` de cada página.
@@ -83,3 +87,8 @@ python3 -m http.server 8000
 Os posts vêm de uma tabela `blog_posts` no Supabase e a inscrição de e-mails vai para `newsletter_subscribers`.
 Para publicar, use `admin.html`. Um post por mês, no formato de retrospecto (eventos, oficinas, datas
 comemorativas, agradecimentos e a chamada "Seja um Guardião").
+
+## Compartilhamento (prévia no WhatsApp e redes)
+
+Cada página tem tags Open Graph no `<head>`. A imagem da prévia é `assets/img/og-image.jpg` (1200x630),
+um corte horizontal de `hero.jpg`. Ao trocar a foto do topo, gere um novo corte com o mesmo nome.

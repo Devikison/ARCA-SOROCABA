@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  var WA_NUMBER = '5515991142594';
+  var WA_NUMBER = '5515997124769';
   var PIX_KEY = '19.831.448/0001-85';
 
   function waLink(text) {
