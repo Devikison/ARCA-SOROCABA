@@ -4,7 +4,7 @@ Site institucional e de doação da **ARCA Sorocaba** (Associação Beneficente 
 Site estático (HTML, CSS e JavaScript puros), publicado pelo GitHub Pages no domínio do arquivo `CNAME`.
 
 O conteúdo segue a documentação do ClickUp: tarefa **[ARCA] SITE ARCA + LINK DA BIO - DOCUMENTAÇÃO**.
-O link da bio (Instagram) fica em outro repositório: `arca-sorocaba-link-bio`.
+O link da bio (Instagram) é publicado em `bio/`; o repositório `arca-sorocaba-link-bio` guarda a cópia de trabalho e a prévia.
 
 ## Estrutura
 
