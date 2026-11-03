@@ -16,6 +16,12 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Abraço entre duas pessoas da comunidade ARCA Sorocaba">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://arcasorocaba.com.br/post.html">
+<link rel="apple-touch-icon" href="assets/img/logo.png">
+<meta name="format-detection" content="telephone=no">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"NGO","name":"ARCA Sorocaba","legalName":"Associação Beneficente Amigos da Arca de Sorocaba","taxID":"19.831.448/0001-85","url":"https://arcasorocaba.com.br/","telephone":"+5515997124769","address":{"@type":"PostalAddress","streetAddress":"Av. Santos Dumont, 100, Jardim Ana Maria","addressLocality":"Sorocaba","addressRegion":"SP","postalCode":"18065-290","addressCountry":"BR"}}
+</script>
 <link rel="icon" type="image/png" href="assets/img/favicon.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
@@ -24,9 +30,9 @@
    Recreated from the Claude Design export (project/Site ARCA Sorocaba.dc.html) */
 
 :root{
-  --blue:#1B45E8;
-  --blue-dark:#1533B8;
-  --blue-bright:#3E66FF;
+  --blue:#192299;
+  --blue-dark:#141B77;
+  --blue-bright:#5960B6;
   --navy:#0B1D3F;
   --page-bg:#071228;
   --tint:#EEF3FF;
@@ -538,6 +544,8 @@ a.post-card{text-decoration:none;cursor:pointer}
 }
 
 </style>
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js')</script>
 <!-- RASTREAMENTO: colar aqui o Pixel / Tag do Google (responsável: Douglas) -->
 <link rel="stylesheet" href="assets/css/header.css">
 </head>
@@ -547,42 +555,32 @@ a.post-card{text-decoration:none;cursor:pointer}
 <div class="page">
 <div class="card">
 
-<header class="site-header" id="topo">
+<header class="site-header" id="topo" data-on="yellow">
   <a href="index.html" class="brand">
-    <img src="assets/img/logo.png" alt="ARCA Sorocaba">
-    <span class="brand-text">
-      <strong class="brand-name">ARCA Sorocaba</strong>
-      <span class="brand-sub">Guardiã da Dignidade</span>
-    </span>
+    <img src="assets/img/logo.png" alt="" width="44" height="44">
+    <span class="brand-name">ARCA Sorocaba</span>
   </a>
-
   <nav aria-label="Navegação principal" class="nav-full">
-    <a href="index.html#quem-somos" class="nav-link">A ARCA</a>
-    <a href="guardiao.html" class="nav-link">Guardião Mensal</a>
-    <a href="index.html#como-ajudar" class="nav-link">Como ajudar</a>
-    <a href="index.html#transparencia" class="nav-link">Transparência</a>
-    <a href="blog.html" class="nav-link" aria-current="page">Jornal da ARCA</a>
-    <a href="index.html#contato" class="nav-link">Contato</a>
-    <a href="index.html#doar" class="nav-cta">Fazer doação</a>
+    <a href="index.html#quem-somos">A ARCA</a>
+    <a href="guardiao.html">Guardião Mensal</a>
+    <a href="index.html#como-ajudar">Como ajudar</a>
+    <a href="index.html#transparencia">Transparência</a>
+    <a href="blog.html">Jornal da ARCA</a>
+    <a href="index.html#contato">Contato</a>
   </nav>
-
-  <div class="nav-compact">
-    <a href="index.html#doar" class="nav-compact-doar">Doar</a>
-    <button type="button" id="menuToggle" class="menu-btn" aria-label="Abrir e fechar o menu" aria-expanded="false" aria-controls="mobileNav">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+  <a href="index.html#doar" class="btn btn-head"><span class="wide">Fazer doação</span><span class="narrow">Doar</span></a>
+  <button type="button" id="menuToggle" class="menu-btn" aria-label="Abrir e fechar o menu" aria-expanded="false" aria-controls="mobileNav">
+    <span></span><span></span>
+  </button>
+  <nav aria-label="Navegação" class="mobile-nav" id="mobileNav">
+    <a href="index.html#quem-somos">A ARCA</a>
+    <a href="guardiao.html">Guardião Mensal</a>
+    <a href="index.html#como-ajudar">Como ajudar</a>
+    <a href="index.html#transparencia">Transparência</a>
+    <a href="blog.html">Jornal da ARCA</a>
+    <a href="index.html#contato">Contato</a>
+  </nav>
 </header>
-
-<nav aria-label="Navegação" class="mobile-nav" id="mobileNav">
-  <a href="index.html#quem-somos">A ARCA</a>
-  <a href="guardiao.html">Guardião Mensal</a>
-  <a href="index.html#como-ajudar">Como ajudar</a>
-  <a href="index.html#transparencia">Transparência</a>
-  <a href="blog.html" aria-current="page">Jornal da ARCA</a>
-  <a href="index.html#contato">Contato</a>
-  <a href="index.html#doar" class="mobile-doar">Fazer doação</a>
-</nav>
 
 <main id="conteudo">
 
@@ -606,45 +604,41 @@ a.post-card{text-decoration:none;cursor:pointer}
 </main>
 </div>
 
-<footer class="site-footer">
+<footer class="site-footer" data-chapter="navy">
+  <p class="footer-quote">“A doação é a linguagem mais linda do amor.”</p>
+  <div class="mark" aria-hidden="true">
+    <span class="mark-a">A</span><span class="mark-r">R</span><span class="mark-c">C</span><span class="mark-z">A</span>
+  </div>
   <div class="footer-grid">
-    <div class="footer-brand c-mobile">
-      <img src="assets/img/logo.png" alt="ARCA Sorocaba">
+    <div class="footer-brand">
+      <img src="assets/img/logo.png" alt="ARCA Sorocaba" width="64" height="64" loading="lazy">
       <p>Associação Beneficente Amigos da Arca de Sorocaba. Acolhemos pessoas adultas com deficiência intelectual há mais de 10 anos.</p>
     </div>
-    <nav class="footer-nav c-mobile" aria-label="Institucional">
+    <nav class="footer-nav" aria-label="Institucional">
       <h3>A ARCA</h3>
-      <div class="footer-links cx-mobile">
-        <a href="index.html">Início</a>
-        <a href="index.html#quem-somos">Quem somos</a>
-        <a href="index.html#transparencia">Transparência</a>
-        <a href="blog.html">Jornal da ARCA</a>
-      </div>
+      <a href="index.html">Início</a>
+      <a href="index.html#quem-somos">Quem somos</a>
+      <a href="index.html#transparencia">Transparência</a>
+      <a href="blog.html">Jornal da ARCA</a>
     </nav>
-    <nav class="footer-nav c-mobile" aria-label="Apoie a ARCA">
+    <nav class="footer-nav" aria-label="Apoie a ARCA">
       <h3>Apoie a ARCA</h3>
-      <div class="footer-links cx-mobile">
-        <a href="guardiao.html">Guardião Mensal</a>
-        <a href="index.html#doar">Doar agora</a>
-        <a href="index.html#como-ajudar">Como ajudar</a>
-        <a href="index.html#voluntariado">Seja voluntário</a>
-      </div>
+      <a href="guardiao.html">Guardião Mensal</a>
+      <a href="index.html#doar">Doar agora</a>
+      <a href="index.html#como-ajudar">Como ajudar</a>
+      <a href="index.html#voluntariado">Seja voluntário</a>
     </nav>
-    <nav class="footer-nav c-mobile" aria-label="Contato">
+    <div class="footer-nav" data-pix-scope>
       <h3>Contato</h3>
-      <div class="footer-links cx-mobile">
-        <a href="https://www.google.com/maps/dir/?api=1&destination=Av.+Santos+Dumont,+100,+Jardim+Ana+Maria,+Sorocaba+-+SP,+18065-290" target="_blank" rel="noopener">Av. Santos Dumont, 100<br>Jardim Ana Maria, Sorocaba/SP<br>CEP 18065-290</a>
-        <a href="https://wa.me/5515997124769?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20ARCA%20Sorocaba." target="_blank" rel="noopener">WhatsApp (15) 99712-4769</a>
-        <a href="https://www.instagram.com/arca_sorocaba/" target="_blank" rel="noopener">Instagram @arca_sorocaba</a>
-        <a href="https://www.google.com/maps/search/?api=1&query=ARCA+Sorocaba+Av.+Santos+Dumont+100+Sorocaba+SP" target="_blank" rel="noopener">Perfil no Google</a>
-        <span>PIX (CNPJ) 19.831.448/0001-85</span>
-      </div>
-    </nav>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Av.+Santos+Dumont,+100,+Jardim+Ana+Maria,+Sorocaba+-+SP,+18065-290" target="_blank" rel="noopener">Av. Santos Dumont, 100, Jardim Ana Maria, Sorocaba/SP, CEP 18065-290</a>
+      <a href="https://wa.me/5515997124769?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20ARCA%20Sorocaba." target="_blank" rel="noopener">WhatsApp (15) 99712-4769</a>
+      <a href="https://www.instagram.com/arca_sorocaba/" target="_blank" rel="noopener">Instagram @arca_sorocaba</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=ARCA+Sorocaba+Av.+Santos+Dumont+100+Sorocaba+SP" target="_blank" rel="noopener">Perfil no Google</a>
+      <button type="button" class="copy-link" data-pix-copy>Copiar chave PIX (CNPJ 19.831.448/0001-85)</button>
+      <span class="pix-copied" data-pix-msg role="status">Chave PIX copiada.</span>
+    </div>
   </div>
-  <div class="footer-bottom cf-mobile">
-    <p class="c-mobile">© 2026 ARCA Sorocaba · ABAAS · CNPJ 19.831.448/0001-85</p>
-    <p class="legal c-mobile">“A doação é a linguagem mais linda do amor.”</p>
-  </div>
+  <p class="footer-bottom">© 2026 ARCA Sorocaba, ABAAS. CNPJ 19.831.448/0001-85</p>
 </footer>
 
 <a class="whatsapp-float" href="https://wa.me/5515997124769?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20ARCA%20Sorocaba." target="_blank" rel="noopener" aria-label="Falar no WhatsApp com a ARCA Sorocaba">
@@ -735,6 +729,8 @@ a.post-card{text-decoration:none;cursor:pointer}
   }
 })();
 </script>
+<script src="assets/js/vendor/lenis.min.js"></script>
+<script src="assets/js/smooth.js"></script>
 <script src="assets/js/header.js"></script>
 </body>
 </html>

@@ -29,6 +29,12 @@
     window.addEventListener('resize', function () {
       if (window.innerWidth > 1120) closeMenu();
     });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
+        closeMenu();
+        menuToggle.focus();
+      }
+    });
   }
 
   // ---------- perguntas frequentes ----------
@@ -86,6 +92,7 @@
     var otherInput = document.getElementById('doarOtherInput');
     var doarBtn = document.getElementById('doarWhatsBtn');
     var state = { freq: 'mensal', valor: 30 };
+    var CUSTO_MES = 30000; // valor informado pela ARCA
 
     // só o valor de R$ 30 tem significado definido pela ARCA
     var IMPACTOS = {
@@ -116,6 +123,18 @@
       if (resumo) resumo.textContent = v > 0 ? fmt(v) + (mensal ? ' por mês' : ' (doação única)') : 'Escolha um valor';
       if (pixValor) pixValor.textContent = v > 0 ? fmt(v) : 'que você escolheu';
       if (pixMensal) pixMensal.classList.toggle('is-visible', mensal);
+      var contaBig = document.getElementById('contaBig');
+      var contaText = document.getElementById('contaText');
+      if (contaBig && contaText) {
+        var quantos = v > 0 ? Math.ceil(CUSTO_MES / v) : 0;
+        if (mensal && quantos > 0) {
+          contaBig.textContent = quantos.toLocaleString('pt-BR') + (quantos === 1 ? ' Guardião' : ' Guardiões');
+          contaText.textContent = 'doando ' + fmt(v) + ' por mês fecham a conta da casa, que custa cerca de R$ 30 mil por mês.';
+        } else {
+          contaBig.textContent = 'R$ 30 mil por mês';
+          contaText.textContent = 'é o custo aproximado para manter a casa aberta. Toda doação, de qualquer valor, ajuda.';
+        }
+      }
     }
     otherInput.addEventListener('input', refresh);
 
@@ -161,12 +180,39 @@
     });
   });
 
+  // ---------- validação dos formulários: o erro aparece abaixo do campo ----------
+  function validate(form) {
+    var first = null;
+    form.querySelectorAll('input, textarea').forEach(function (field) {
+      var old = field.parentElement.querySelector('.field-error');
+      if (old) old.remove();
+      field.removeAttribute('aria-invalid');
+      field.removeAttribute('aria-describedby');
+      var msg = '';
+      if (field.required && !field.value.trim()) msg = 'Preencha este campo para continuar.';
+      else if (field.type === 'email' && field.value.trim() && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(field.value.trim())) msg = 'Confira o e-mail. Exemplo: voce@email.com';
+      if (msg) {
+        var err = document.createElement('span');
+        err.className = 'field-error';
+        err.id = field.name + '-erro-' + form.getAttribute('data-wa-form');
+        err.textContent = msg;
+        field.parentElement.appendChild(err);
+        field.setAttribute('aria-invalid', 'true');
+        field.setAttribute('aria-describedby', err.id);
+        if (!first) first = field;
+      }
+    });
+    if (first) first.focus();
+    return !first;
+  }
+
   // ---------- formulários que abrem o WhatsApp da ARCA ----------
   // O site é estático: em vez de fingir que enviou, montamos a mensagem e abrimos o WhatsApp.
   document.querySelectorAll('form[data-wa-form]').forEach(function (form) {
     var done = form.parentElement.querySelector('.form-done');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (!validate(form)) return;
       var kind = form.getAttribute('data-wa-form');
       var val = function (name) {
         var el = form.elements[name];
@@ -189,59 +235,63 @@
       if (done) done.classList.add('is-visible');
     });
   });
-  // ---------- fotos: salve assets/fotos/<nome>.jpg (ou .webp/.png) e ela aparece no espaço ----------
-  document.querySelectorAll('.photo-slot[data-foto]').forEach(function (slot) {
-    var name = slot.getAttribute('data-foto');
-    var alt = slot.getAttribute('data-alt') || '';
-    var exts = ['jpg', 'webp', 'png'];
-    (function tryNext(i) {
-      if (i >= exts.length) return;
-      var img = new Image();
-      img.onload = function () {
-        slot.innerHTML = '';
-        img.alt = alt;
-        img.loading = 'lazy';
-        slot.appendChild(img);
-        slot.classList.add('has-photo');
-      };
-      img.onerror = function () { tryNext(i + 1); };
-      img.src = 'assets/fotos/' + name + '.' + exts[i];
-    })(0);
-  });
-  // ---------- números da ARCA: contam de zero até o valor final quando entram na tela ----------
-  var statsPanel = document.querySelector('.stats-panel');
-  if (statsPanel) {
-    var counters = statsPanel.querySelectorAll('[data-count]');
-    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var fmtNum = function (v, d) { return v.toFixed(d).replace('.', ','); };
-    var showValue = function (el, v) {
-      var d = parseInt(el.getAttribute('data-decimals') || '0', 10);
-      el.textContent = (el.getAttribute('data-prefix') || '') + fmtNum(v, d) + (el.getAttribute('data-suffix') || '');
-    };
-    var runCounter = function (el) {
-      var end = parseFloat(el.getAttribute('data-count'));
-      var start = null;
-      var dur = 1800;
-      var step = function (t) {
-        if (start === null) start = t;
-        var p = Math.min((t - start) / dur, 1);
-        showValue(el, end * (1 - Math.pow(1 - p, 3)));
-        if (p < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    };
-    if ('IntersectionObserver' in window && !reduced) {
-      statsPanel.classList.add('stats-ready');
-      counters.forEach(function (el) { showValue(el, 0); });
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          io.disconnect();
-          statsPanel.classList.add('is-in');
-          counters.forEach(runCounter);
+  // ---------- carrossel contínuo de fotos ----------
+  var marquee = document.getElementById('marquee');
+  if (marquee) {
+    var reducedMarquee = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reducedMarquee) {
+      marquee.querySelectorAll('.marquee-track').forEach(function (track) {
+        Array.prototype.slice.call(track.children).forEach(function (li) {
+          var copy = li.cloneNode(true);
+          copy.setAttribute('aria-hidden', 'true');
+          copy.querySelector('img').alt = '';
+          track.appendChild(copy);
         });
-      }, { threshold: 0.45 });
-      io.observe(statsPanel);
+      });
+      marquee.classList.add('is-ready');
+    }
+    var marqueeToggle = document.getElementById('marqueeToggle');
+    if (marqueeToggle) {
+      if (reducedMarquee) marqueeToggle.hidden = true;
+      marqueeToggle.addEventListener('click', function () {
+        var paused = marquee.classList.toggle('is-paused');
+        marqueeToggle.setAttribute('aria-pressed', String(paused));
+        marqueeToggle.textContent = paused ? 'Continuar as fotos' : 'Pausar as fotos';
+      });
     }
   }
+
+  // ---------- entrada das seções ----------
+  var toReveal = document.querySelectorAll('.reveal, #prints');
+  if ('IntersectionObserver' in window) {
+    var revealIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          revealIO.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    toReveal.forEach(function (el) { revealIO.observe(el); });
+  } else {
+    toReveal.forEach(function (el) { el.classList.add('is-in'); });
+  }
+
+  // ---------- a barra superior acompanha a cor do capítulo ----------
+  var siteHeader = document.querySelector('.site-header');
+  var chapters = document.querySelectorAll('[data-chapter]');
+  if (siteHeader && chapters.length && 'IntersectionObserver' in window) {
+    var chapterIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) siteHeader.setAttribute('data-on', entry.target.getAttribute('data-chapter'));
+      });
+    }, { rootMargin: '-72px 0px -88% 0px' });
+    chapters.forEach(function (c) { chapterIO.observe(c); });
+  }
+
+  // ---------- link atual no menu ----------
+  var page = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-full a').forEach(function (a) {
+    if (a.getAttribute('href') === page) a.setAttribute('aria-current', 'page');
+  });
 })();

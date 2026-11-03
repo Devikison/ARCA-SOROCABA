@@ -25,19 +25,14 @@ O link da bio (Instagram) fica em outro repositório: `arca-sorocaba-link-bio`.
     └── fotos/          Fotos da home (veja abaixo)
 ```
 
-## Como colocar as fotos da home
+## Fotos
 
-Salve o arquivo em `assets/fotos/` com o nome abaixo (`.jpg`, `.webp` ou `.png`). Ela aparece sozinha no espaço, sem mexer no código.
+As fotos ficam em `assets/fotos/`, em WebP e em dois tamanhos (o sufixo é a largura em pixels). Para trocar uma, gere o novo arquivo com o mesmo nome. Cada imagem está em uma tag `<img>` no HTML, com o texto alternativo descrevendo a cena.
 
-| Arquivo              | Onde aparece                                   |
-|----------------------|------------------------------------------------|
-| `quem-somos.jpg`     | Seção "Quem somos"                             |
-| `acolhidos.jpg`      | Seção "Quem a ARCA acolhe" (oficinas e convivência) |
-| `videos.jpg`         | Capa da seção de vídeos (formato horizontal 16:9) |
-| `guardiao.jpg`       | Chamada do Guardião Mensal                     |
-| `transparencia.jpg`  | Seção "Transparência"                          |
+## Rolagem suave
 
-Dica: fotos verticais (4:5) ou quadradas funcionam melhor; use até ~300 KB por foto.
+Fica em `assets/js/smooth.js`, com a biblioteca Lenis em `assets/js/vendor/`. Funciona na roda do mouse. No celular a rolagem do próprio aparelho continua valendo, e quem pede menos movimento no sistema fica sem o efeito.
+
 Tom das imagens: convivência, alegria e autonomia, nunca coitadismo ou pena.
 
 ## Regras de conteúdo (do ClickUp)
