@@ -31,7 +31,7 @@ As fotos ficam em `assets/fotos/`, em WebP e em dois tamanhos (o sufixo é a lar
 
 ## Rolagem suave
 
-Fica em `assets/js/smooth.js`, com a biblioteca Lenis em `assets/js/vendor/`. Funciona na roda do mouse. No celular a rolagem do próprio aparelho continua valendo, e quem pede menos movimento no sistema fica sem o efeito.
+Fica em `assets/js/smooth.js`, sem biblioteca: bibliotecas de rolagem como o Lenis travam a barra lateral. Funciona na roda do mouse e solta o controle ao pegar a barra, clicar ou usar o teclado. No celular a rolagem do próprio aparelho continua valendo, e quem pede menos movimento no sistema fica sem o efeito.
 
 Tom das imagens: convivência, alegria e autonomia, nunca coitadismo ou pena.
 
