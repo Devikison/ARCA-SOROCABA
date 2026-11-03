@@ -21,7 +21,8 @@
     var link = e.target.closest && e.target.closest('a[href*="#"]');
     if (!link || link.target === '_blank') return;
     var url = new URL(link.href, location.href);
-    if (url.pathname !== location.pathname || !url.hash || url.hash === '#') return;
+    var samePage = url.pathname.replace(/index.html$/, '') === location.pathname.replace(/index.html$/, '');
+    if (!samePage || !url.hash || url.hash === '#') return;
     var target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
     if (!target) return;
     e.preventDefault();
