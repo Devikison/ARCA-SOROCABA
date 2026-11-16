@@ -342,6 +342,8 @@ html{scrollbar-color:auto;scrollbar-width:auto}
 .glass p{margin:0}
 .glass .btn{margin-top:6px}
 @media (min-width:761px){.duo-cards{grid-template-columns:1fr 1fr}}
+.portal-cta{display:flex;justify-content:center;margin-top:clamp(20px,2.6vw,32px)}
+@media (max-width:560px){.portal-cta .btn{width:100%}}
 
 /* contato */
 .contato-grid{display:grid;gap:clamp(10px,1.2vw,16px)}
