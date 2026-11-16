@@ -468,9 +468,10 @@ main{display:block}
 
 
 /* ---------- blog ---------- */
-.blog-hero{padding-top:clamp(30px,4vw,54px);padding-bottom:6px}
+.blog-hero{padding-top:clamp(22px,2.6vw,36px);padding-bottom:6px}
 .blog-hero .lede{max-width:64ch}
-.blog-notice{margin:22px 0 0;padding:16px 20px;background:var(--tint);border:1px solid var(--tint-border);border-radius:var(--r-md);color:var(--body);font-size:.95rem;line-height:1.6;max-width:64ch}
+@media (max-width:680px){.blog-hero .lede{font-size:.95rem;line-height:1.6}}
+.blog-notice{margin:16px 0 0;padding:16px 20px;background:var(--tint);border:1px solid var(--tint-border);border-radius:var(--r-md);color:var(--body);font-size:.95rem;line-height:1.6;max-width:64ch}
 .blog-notice strong{color:var(--navy)}
 .posts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),320px));gap:clamp(20px,2.4vw,30px);margin-top:clamp(28px,3vw,40px);padding-bottom:clamp(40px,5vw,70px)}
 .post-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--soft-border);border-radius:var(--r-xl);overflow:hidden;transition:all .45s var(--ease)}
@@ -519,10 +520,10 @@ a.post-card{text-decoration:none;cursor:pointer}
 
 /* ---------- capa do blog ---------- */
 .blog-cover{padding:clamp(10px,1.4vw,18px) clamp(18px,3.4vw,58px) 0}
-.blog-cover-media{width:100%;aspect-ratio:1920/720;border-radius:var(--r-xl);background:linear-gradient(135deg,var(--blue) 0%,var(--navy) 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
+.blog-cover-media{width:100%;height:clamp(112px,13vw,170px);border-radius:var(--r-xl);background:linear-gradient(135deg,var(--blue) 0%,var(--navy) 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
 .blog-cover-media span{color:rgba(255,255,255,.8);font-size:.86rem;line-height:1.6;max-width:38ch}
 .blog-cover-media em{font-style:normal;color:rgba(255,255,255,.55);font-size:.8rem}
-@media (max-width:680px){.blog-cover-media{aspect-ratio:1080/1350}}
+@media (max-width:680px){.blog-cover-media{height:104px;padding:14px}}
 
 /* ---------- paginação ---------- */
 .pagination{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin-top:clamp(30px,3.4vw,44px)}
@@ -684,15 +685,15 @@ html.viewer-open,html.viewer-open body{overflow:hidden}
 
 
 <section class="blog-cover" aria-label="Capa da página">
-  <div class="blog-cover-media"><img src="assets/img/logo.png" alt="ARCA Sorocaba" style="height:min(60%,260px);width:auto;filter:brightness(0) invert(1)"></div>
+  <div class="blog-cover-media"><img src="assets/img/logo.png" alt="ARCA Sorocaba" style="height:78%;width:auto;filter:brightness(0) invert(1)"></div>
 </section>
 
 <section class="blog-hero section" aria-label="Abertura da página">
   <div class="c-mobile">
     <span class="eyebrow eyebrow--dot">Transparência</span>
     <h1 class="h2">Documentos e prestação de contas da ARCA.</h1>
-    <p class="lede">Aqui ficam os documentos da ARCA Sorocaba (ABAAS): estatuto, relações, regulamentos e balanço patrimonial, além dos documentos da parceria com a Prefeitura de Sorocaba, por meio da Secretaria da Cidadania (SECID), no Termo de Fomento PA nº 3552205.404.00000169/2026-55: plano de trabalho, relatórios físicos financeiros e prestação de contas.</p>
-    <p class="blog-notice"><strong>Como usar.</strong> Escolha um tópico para ver os documentos dele. Toque em um documento para abrir e, com ele aberto, use o botão Baixar PDF para salvar no seu aparelho.</p>
+    <p class="lede">Documentos da ARCA Sorocaba (ABAAS) e da parceria com a Prefeitura de Sorocaba, pela Secretaria da Cidadania (SECID), no Termo de Fomento PA nº 3552205.404.00000169/2026-55.</p>
+    <p class="blog-notice"><strong>Como usar.</strong> Escolha um tópico, toque no documento para abrir e use o botão Baixar PDF para salvar.</p>
   </div>
 </section>
 
