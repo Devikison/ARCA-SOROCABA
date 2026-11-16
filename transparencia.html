@@ -561,19 +561,35 @@ a.post-card{text-decoration:none;cursor:pointer}
 /* ---------- transparência: botões de documento ---------- */
 .docs-count{margin:clamp(26px,3vw,38px) 0 0;font-family:Montserrat,sans-serif;font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .docs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(330px,100%),1fr));gap:clamp(12px,1.4vw,18px);margin-top:16px}
-.docs-topics{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.docs-topics a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 16px;border:1px solid var(--tint-border);background:var(--tint);border-radius:999px;font-family:Montserrat,sans-serif;font-weight:700;font-size:.82rem;color:var(--navy);text-decoration:none;transition:all .45s var(--ease)}
-.docs-topics a:hover{background:var(--blue);border-color:var(--blue);color:#fff}
-.docs-topics a span{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:#fff;color:var(--blue);font-size:.72rem}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(270px,100%),1fr));gap:clamp(12px,1.4vw,18px);margin-top:16px}
+.topic-card{display:flex;flex-direction:column;gap:8px;padding:clamp(18px,2vw,24px);background:#fff;border:1px solid var(--soft-border);border-radius:var(--r-lg);color:var(--navy);text-decoration:none;transition:all .45s var(--ease)}
+.topic-card:hover{border-color:var(--blue);background:var(--tint);color:var(--navy);transform:translateY(-3px);box-shadow:0 18px 36px rgba(7,18,40,.12)}
+.topic-card:hover .doc-ico{background:var(--blue);border-color:var(--blue);color:#fff}
+.topic-card-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
+.topic-card-count{font-family:Montserrat,sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.topic-card-title{font-family:Montserrat,sans-serif;font-weight:800;font-size:1.08rem;line-height:1.25}
+.topic-card-desc{font-size:.88rem;line-height:1.55;color:var(--body)}
+.topic-card-go{display:inline-flex;align-items:center;gap:6px;margin-top:auto;padding-top:8px;font-family:Montserrat,sans-serif;font-weight:700;font-size:.82rem;color:var(--blue)}
+.docs-back{display:none;align-items:center;gap:8px;min-height:44px;margin-top:clamp(22px,3vw,34px);padding:8px 18px 8px 14px;border:1px solid var(--tint-border);background:var(--tint);border-radius:999px;font-family:Montserrat,sans-serif;font-weight:700;font-size:.86rem;color:var(--navy);cursor:pointer;transition:all .45s var(--ease)}
+.docs-back:hover{background:var(--blue);border-color:var(--blue);color:#fff}
 .docs-topic{margin-top:clamp(34px,4.4vw,56px);scroll-margin-top:110px}
 .docs-topic-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:12px;border-bottom:1px solid var(--soft-border)}
 .docs-topic-title{font-family:Montserrat,sans-serif;font-weight:800;font-size:clamp(1.2rem,1.9vw,1.5rem);line-height:1.2;color:var(--navy);margin:0}
 .docs-topic-count{font-family:Montserrat,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .docs-topic-desc{margin:12px 0 0;font-size:.95rem;line-height:1.6;color:var(--body);max-width:64ch}
-@media (max-width:560px){.docs-topics a{flex:1 1 auto;justify-content:space-between}}
+/* com JavaScript: a página mostra os tópicos e cada tópico abre como uma tela própria */
+.js .docs-topic{display:none}
+.js .docs-topic.is-active{display:block;margin-top:clamp(18px,2.4vw,28px)}
+.js .docs-topic.is-active .docs-topic-title{font-size:clamp(1.6rem,3vw,2.3rem)}
+.topic-view .topic-menu,.topic-view .blog-cover,.topic-view .blog-hero{display:none}
+.topic-view .docs-back{display:inline-flex}
+.topic-view main{padding-top:clamp(70px,8vw,96px)}
+.docs-parceria-logos{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:clamp(20px,4vw,48px)}
+.docs-parceria .docs-parceria-logos img{width:auto;max-width:100%}
+.docs-parceria .logo-pref{height:clamp(70px,8vw,92px)}
+.docs-parceria .logo-cmas{height:clamp(96px,11vw,126px)}
 .docs-parceria{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:clamp(30px,4vw,48px);padding:clamp(24px,3vw,36px) 0 clamp(40px,5vw,70px);border-top:1px solid var(--soft-border)}
 .docs-parceria-label{font-family:Montserrat,sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.docs-parceria img{width:min(240px,70%);height:auto}
 .doc-btn{display:flex;align-items:center;gap:14px;min-height:92px;padding:16px 18px;background:#fff;border:1px solid var(--soft-border);border-radius:var(--r-lg);color:var(--navy);text-decoration:none;cursor:pointer;transition:all .45s var(--ease)}
 .doc-btn:hover{border-color:var(--blue);background:var(--tint);color:var(--navy);transform:translateY(-3px);box-shadow:0 18px 36px rgba(7,18,40,.12)}
 .doc-ico{flex:none;width:46px;height:46px;border-radius:13px;background:var(--tint);border:1px solid var(--tint-border);color:var(--blue);display:grid;place-items:center;transition:all .45s var(--ease)}
@@ -670,28 +686,149 @@ html.viewer-open,html.viewer-open body{overflow:hidden}
   <div class="c-mobile">
     <span class="eyebrow eyebrow--dot">Transparência</span>
     <h1 class="h2">Documentos e prestação de contas da ARCA.</h1>
-    <p class="lede">Aqui ficam os documentos da parceria entre a ARCA Sorocaba (ABAAS) e a Prefeitura de Sorocaba, por meio da Secretaria da Cidadania (SECID): o Termo de Fomento PA nº 3552205.404.00000169/2026-55, o plano de trabalho, os relatórios físicos de cada mês e a prestação de contas.</p>
-    <p class="blog-notice"><strong>Como usar.</strong> Toque em um documento para abrir. Com ele aberto, use o botão Baixar PDF para salvar no seu aparelho.</p>
+    <p class="lede">Aqui ficam os documentos da ARCA Sorocaba (ABAAS): estatuto, relações, regulamentos e balanço patrimonial, além dos documentos da parceria com a Prefeitura de Sorocaba, por meio da Secretaria da Cidadania (SECID), no Termo de Fomento PA nº 3552205.404.00000169/2026-55: plano de trabalho, relatórios físicos financeiros e prestação de contas.</p>
+    <p class="blog-notice"><strong>Como usar.</strong> Escolha um tópico para ver os documentos dele. Toque em um documento para abrir e, com ele aberto, use o botão Baixar PDF para salvar no seu aparelho.</p>
   </div>
 </section>
 
 <section class="section" aria-label="Documentos para abrir e baixar">
-  <p class="docs-count" data-docs-total>16 documentos disponíveis em 5 tópicos</p>
-  <nav class="docs-topics" aria-label="Tópicos dos documentos">
-    <a href="#parceria">Parceria com a Prefeitura <span data-topic-count="parceria">2</span></a>
-    <a href="#prestacao-de-contas">Prestação de contas <span data-topic-count="prestacao-de-contas">4</span></a>
-    <a href="#relatorios-fisicos">Relatórios físicos <span data-topic-count="relatorios-fisicos">4</span></a>
-    <a href="#equipe">Equipe, dirigentes e prestadores <span data-topic-count="equipe">3</span></a>
-    <a href="#institucional">Documentos institucionais <span data-topic-count="institucional">3</span></a>
-  </nav>
+  <div class="topic-menu" id="topicos">
+    <p class="docs-count" data-docs-total>18 documentos em 7 tópicos</p>
+    <nav class="topic-grid" aria-label="Tópicos dos documentos">
+      <a class="topic-card" href="#estatuto" data-topic-link="estatuto">
+        <span class="topic-card-top"><span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span class="topic-card-count" data-topic-count="estatuto">1 documento</span></span>
+        <span class="topic-card-title">Estatuto social</span>
+        <span class="topic-card-desc">O documento que cria e organiza a associação.</span>
+        <span class="topic-card-go">Ver documentos <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="topic-card" href="#relacoes" data-topic-link="relacoes">
+        <span class="topic-card-top"><span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span class="topic-card-count" data-topic-count="relacoes">3 documentos</span></span>
+        <span class="topic-card-title">Relações</span>
+        <span class="topic-card-desc">Empregados com remuneração, dirigentes e prestadores de serviço.</span>
+        <span class="topic-card-go">Ver documentos <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="topic-card" href="#regulamentos" data-topic-link="regulamentos">
+        <span class="topic-card-top"><span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span class="topic-card-count" data-topic-count="regulamentos">2 documentos</span></span>
+        <span class="topic-card-title">Regulamentos</span>
+        <span class="topic-card-desc">As regras de compras e de contratação de pessoal.</span>
+        <span class="topic-card-go">Ver documentos <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="topic-card" href="#balanco" data-topic-link="balanco">
+        <span class="topic-card-top"><span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span class="topic-card-count" data-topic-count="balanco">2 documentos</span></span>
+        <span class="topic-card-title">Balanço patrimonial</span>
+        <span class="topic-card-desc">Balanço e demonstração do resultado de cada exercício.</span>
+        <span class="topic-card-go">Ver documentos <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="topic-card" href="#parceria" data-topic-link="parceria">
+        <span class="topic-card-top"><span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span class="topic-card-count" data-topic-count="parceria">2 documentos</span></span>
+        <span class="topic-card-title">Termo de fomento e plano de trabalho</span>
+        <span class="topic-card-desc">A parceria com a Prefeitura de Sorocaba, pela Secretaria da Cidadania (SECID).</span>
+        <span class="topic-card-go">Ver documentos <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="topic-card" href="#relatorios-fisicos" data-topic-link="relatorios-fisicos">
+        <span class="topic-card-top"><span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span class="topic-card-count" data-topic-count="relatorios-fisicos">4 documentos</span></span>
+        <span class="topic-card-title">Relatórios físicos financeiros</span>
+        <span class="topic-card-desc">O que foi realizado em cada mês, do mais recente para o mais antigo.</span>
+        <span class="topic-card-go">Ver documentos <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="topic-card" href="#prestacao-de-contas" data-topic-link="prestacao-de-contas">
+        <span class="topic-card-top"><span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span class="topic-card-count" data-topic-count="prestacao-de-contas">4 documentos</span></span>
+        <span class="topic-card-title">Prestação de contas</span>
+        <span class="topic-card-desc">Uma prestação por mês, da mais recente para a mais antiga.</span>
+        <span class="topic-card-go">Ver documentos <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </nav>
+  </div>
+
+  <button type="button" class="docs-back" id="docsBack"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg> Todos os tópicos</button>
 
   <!-- Para incluir um documento novo: coloque o PDF na pasta documentos/ e copie um bloco <a class="doc-btn"> para dentro do tópico certo. As contagens se atualizam sozinhas. -->
+  <section class="docs-topic" id="estatuto" aria-labelledby="estatuto-title">
+    <div class="docs-topic-head">
+      <h2 class="docs-topic-title" id="estatuto-title">Estatuto social</h2>
+      <span class="docs-topic-count" data-topic-label="estatuto">1 documento</span>
+    </div>
+    <p class="docs-topic-desc">O documento que cria e organiza a associação.</p>
+    <div class="docs-grid">
+      <a class="doc-btn" href="documentos/estatuto-social.pdf" data-doc data-title="Estatuto Social" data-sub="Associação Beneficente Amigos da Arca de Sorocaba">
+        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
+        <span class="doc-txt"><span class="doc-title">Estatuto Social</span><span class="doc-sub">Associação Beneficente Amigos da Arca de Sorocaba</span></span>
+        <span class="doc-go" aria-hidden="true">Abrir</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="docs-topic" id="relacoes" aria-labelledby="relacoes-title">
+    <div class="docs-topic-head">
+      <h2 class="docs-topic-title" id="relacoes-title">Relações</h2>
+      <span class="docs-topic-count" data-topic-label="relacoes">3 documentos</span>
+    </div>
+    <p class="docs-topic-desc">Empregados com remuneração, dirigentes e prestadores de serviço.</p>
+    <div class="docs-grid">
+      <a class="doc-btn" href="documentos/relacao-de-empregados.pdf" data-doc data-title="Relação de empregados com remuneração" data-sub="Termo de fomento PA nº 3552205.404.00000169/2026-55">
+        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
+        <span class="doc-txt"><span class="doc-title">Relação de empregados com remuneração</span><span class="doc-sub">Termo de fomento PA nº 3552205.404.00000169/2026-55</span></span>
+        <span class="doc-go" aria-hidden="true">Abrir</span>
+      </a>
+      <a class="doc-btn" href="documentos/relacao-nominal-dos-dirigentes.pdf" data-doc data-title="Relação nominal dos dirigentes" data-sub="Associação Beneficente Amigos da Arca de Sorocaba">
+        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
+        <span class="doc-txt"><span class="doc-title">Relação nominal dos dirigentes</span><span class="doc-sub">Associação Beneficente Amigos da Arca de Sorocaba</span></span>
+        <span class="doc-go" aria-hidden="true">Abrir</span>
+      </a>
+      <a class="doc-btn" href="documentos/prestadores-de-servico.pdf" data-doc data-title="Prestadores de serviço" data-sub="Termo de fomento PA nº 3552205.404.00000169/2026-55">
+        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
+        <span class="doc-txt"><span class="doc-title">Prestadores de serviço</span><span class="doc-sub">Termo de fomento PA nº 3552205.404.00000169/2026-55</span></span>
+        <span class="doc-go" aria-hidden="true">Abrir</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="docs-topic" id="regulamentos" aria-labelledby="regulamentos-title">
+    <div class="docs-topic-head">
+      <h2 class="docs-topic-title" id="regulamentos-title">Regulamentos</h2>
+      <span class="docs-topic-count" data-topic-label="regulamentos">2 documentos</span>
+    </div>
+    <p class="docs-topic-desc">As regras de compras e de contratação de pessoal.</p>
+    <div class="docs-grid">
+      <a class="doc-btn" href="documentos/regulamento-de-compras.pdf" data-doc data-title="Regulamento de Compras" data-sub="Associação Beneficente Amigos da Arca de Sorocaba">
+        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
+        <span class="doc-txt"><span class="doc-title">Regulamento de Compras</span><span class="doc-sub">Associação Beneficente Amigos da Arca de Sorocaba</span></span>
+        <span class="doc-go" aria-hidden="true">Abrir</span>
+      </a>
+      <a class="doc-btn" href="documentos/regulamento-de-contratacao-de-pessoal.pdf" data-doc data-title="Regulamento de contratação de pessoal" data-sub="Associação Beneficente Amigos da Arca de Sorocaba">
+        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
+        <span class="doc-txt"><span class="doc-title">Regulamento de contratação de pessoal</span><span class="doc-sub">Associação Beneficente Amigos da Arca de Sorocaba</span></span>
+        <span class="doc-go" aria-hidden="true">Abrir</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="docs-topic" id="balanco" aria-labelledby="balanco-title">
+    <div class="docs-topic-head">
+      <h2 class="docs-topic-title" id="balanco-title">Balanço patrimonial</h2>
+      <span class="docs-topic-count" data-topic-label="balanco">2 documentos</span>
+    </div>
+    <p class="docs-topic-desc">Balanço e demonstração do resultado de cada exercício.</p>
+    <div class="docs-grid">
+      <a class="doc-btn" href="documentos/balanco-patrimonial-2025.pdf" data-doc data-title="Balanço patrimonial 2025" data-sub="Exercício de 01/01/2025 a 31/12/2025">
+        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
+        <span class="doc-txt"><span class="doc-title">Balanço patrimonial 2025</span><span class="doc-sub">Exercício de 01/01/2025 a 31/12/2025</span></span>
+        <span class="doc-go" aria-hidden="true">Abrir</span>
+      </a>
+      <a class="doc-btn" href="documentos/dre-2025.pdf" data-doc data-title="Demonstração do Resultado do Exercício (DRE) 2025" data-sub="Exercício de 01/01/2025 a 31/12/2025">
+        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
+        <span class="doc-txt"><span class="doc-title">Demonstração do Resultado do Exercício (DRE) 2025</span><span class="doc-sub">Exercício de 01/01/2025 a 31/12/2025</span></span>
+        <span class="doc-go" aria-hidden="true">Abrir</span>
+      </a>
+    </div>
+  </section>
+
   <section class="docs-topic" id="parceria" aria-labelledby="parceria-title">
     <div class="docs-topic-head">
-      <h2 class="docs-topic-title" id="parceria-title">Parceria com a Prefeitura</h2>
+      <h2 class="docs-topic-title" id="parceria-title">Termo de fomento e plano de trabalho</h2>
       <span class="docs-topic-count" data-topic-label="parceria">2 documentos</span>
     </div>
-    <p class="docs-topic-desc">Termo de fomento e plano de trabalho com a Secretaria da Cidadania (SECID).</p>
+    <p class="docs-topic-desc">A parceria com a Prefeitura de Sorocaba, pela Secretaria da Cidadania (SECID).</p>
     <div class="docs-grid">
       <a class="doc-btn" href="documentos/termo-de-fomento.pdf" data-doc data-title="Termo de fomento" data-sub="PA nº 3552205.404.00000169/2026-55">
         <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
@@ -701,6 +838,36 @@ html.viewer-open,html.viewer-open body{overflow:hidden}
       <a class="doc-btn" href="documentos/plano-de-trabalho.pdf" data-doc data-title="Plano de trabalho" data-sub="Termo de fomento PA nº 3552205.404.00000169/2026-55">
         <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
         <span class="doc-txt"><span class="doc-title">Plano de trabalho</span><span class="doc-sub">Termo de fomento PA nº 3552205.404.00000169/2026-55</span></span>
+        <span class="doc-go" aria-hidden="true">Abrir</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="docs-topic" id="relatorios-fisicos" aria-labelledby="relatorios-fisicos-title">
+    <div class="docs-topic-head">
+      <h2 class="docs-topic-title" id="relatorios-fisicos-title">Relatórios físicos financeiros</h2>
+      <span class="docs-topic-count" data-topic-label="relatorios-fisicos">4 documentos</span>
+    </div>
+    <p class="docs-topic-desc">O que foi realizado em cada mês, do mais recente para o mais antigo.</p>
+    <div class="docs-grid">
+      <a class="doc-btn" href="documentos/relatorio-fisico-2026-10-outubro.pdf" data-doc data-title="Relatório físico (Outubro 2026)" data-sub="Termo de fomento PA nº 3552205.404.00000169/2026-55">
+        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
+        <span class="doc-txt"><span class="doc-title">Relatório físico (Outubro 2026)</span><span class="doc-sub">Termo de fomento PA nº 3552205.404.00000169/2026-55</span></span>
+        <span class="doc-go" aria-hidden="true">Abrir</span>
+      </a>
+      <a class="doc-btn" href="documentos/relatorio-fisico-2026-09-setembro.pdf" data-doc data-title="Relatório físico (Setembro 2026)" data-sub="Termo de fomento PA nº 3552205.404.00000169/2026-55">
+        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
+        <span class="doc-txt"><span class="doc-title">Relatório físico (Setembro 2026)</span><span class="doc-sub">Termo de fomento PA nº 3552205.404.00000169/2026-55</span></span>
+        <span class="doc-go" aria-hidden="true">Abrir</span>
+      </a>
+      <a class="doc-btn" href="documentos/relatorio-fisico-2026-08-agosto.pdf" data-doc data-title="Relatório físico (Agosto 2026)" data-sub="Termo de fomento PA nº 3552205.404.00000169/2026-55">
+        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
+        <span class="doc-txt"><span class="doc-title">Relatório físico (Agosto 2026)</span><span class="doc-sub">Termo de fomento PA nº 3552205.404.00000169/2026-55</span></span>
+        <span class="doc-go" aria-hidden="true">Abrir</span>
+      </a>
+      <a class="doc-btn" href="documentos/relatorio-fisico-2026-07-julho.pdf" data-doc data-title="Relatório físico (Julho 2026)" data-sub="Termo de fomento PA nº 3552205.404.00000169/2026-55">
+        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
+        <span class="doc-txt"><span class="doc-title">Relatório físico (Julho 2026)</span><span class="doc-sub">Termo de fomento PA nº 3552205.404.00000169/2026-55</span></span>
         <span class="doc-go" aria-hidden="true">Abrir</span>
       </a>
     </div>
@@ -736,92 +903,15 @@ html.viewer-open,html.viewer-open body{overflow:hidden}
     </div>
   </section>
 
-  <section class="docs-topic" id="relatorios-fisicos" aria-labelledby="relatorios-fisicos-title">
-    <div class="docs-topic-head">
-      <h2 class="docs-topic-title" id="relatorios-fisicos-title">Relatórios físicos</h2>
-      <span class="docs-topic-count" data-topic-label="relatorios-fisicos">4 documentos</span>
-    </div>
-    <p class="docs-topic-desc">O que foi realizado em cada mês da parceria, do mais recente para o mais antigo.</p>
-    <div class="docs-grid">
-      <a class="doc-btn" href="documentos/relatorio-fisico-2026-10-outubro.pdf" data-doc data-title="Relatório físico (Outubro 2026)" data-sub="Termo de fomento PA nº 3552205.404.00000169/2026-55">
-        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
-        <span class="doc-txt"><span class="doc-title">Relatório físico (Outubro 2026)</span><span class="doc-sub">Termo de fomento PA nº 3552205.404.00000169/2026-55</span></span>
-        <span class="doc-go" aria-hidden="true">Abrir</span>
-      </a>
-      <a class="doc-btn" href="documentos/relatorio-fisico-2026-09-setembro.pdf" data-doc data-title="Relatório físico (Setembro 2026)" data-sub="Termo de fomento PA nº 3552205.404.00000169/2026-55">
-        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
-        <span class="doc-txt"><span class="doc-title">Relatório físico (Setembro 2026)</span><span class="doc-sub">Termo de fomento PA nº 3552205.404.00000169/2026-55</span></span>
-        <span class="doc-go" aria-hidden="true">Abrir</span>
-      </a>
-      <a class="doc-btn" href="documentos/relatorio-fisico-2026-08-agosto.pdf" data-doc data-title="Relatório físico (Agosto 2026)" data-sub="Termo de fomento PA nº 3552205.404.00000169/2026-55">
-        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
-        <span class="doc-txt"><span class="doc-title">Relatório físico (Agosto 2026)</span><span class="doc-sub">Termo de fomento PA nº 3552205.404.00000169/2026-55</span></span>
-        <span class="doc-go" aria-hidden="true">Abrir</span>
-      </a>
-      <a class="doc-btn" href="documentos/relatorio-fisico-2026-07-julho.pdf" data-doc data-title="Relatório físico (Julho 2026)" data-sub="Termo de fomento PA nº 3552205.404.00000169/2026-55">
-        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
-        <span class="doc-txt"><span class="doc-title">Relatório físico (Julho 2026)</span><span class="doc-sub">Termo de fomento PA nº 3552205.404.00000169/2026-55</span></span>
-        <span class="doc-go" aria-hidden="true">Abrir</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="docs-topic" id="equipe" aria-labelledby="equipe-title">
-    <div class="docs-topic-head">
-      <h2 class="docs-topic-title" id="equipe-title">Equipe, dirigentes e prestadores</h2>
-      <span class="docs-topic-count" data-topic-label="equipe">3 documentos</span>
-    </div>
-    <p class="docs-topic-desc">Quem trabalha na ARCA, quem a dirige e quem presta serviço para ela.</p>
-    <div class="docs-grid">
-      <a class="doc-btn" href="documentos/relacao-de-empregados.pdf" data-doc data-title="Relação de empregados com remuneração" data-sub="Termo de fomento PA nº 3552205.404.00000169/2026-55">
-        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
-        <span class="doc-txt"><span class="doc-title">Relação de empregados com remuneração</span><span class="doc-sub">Termo de fomento PA nº 3552205.404.00000169/2026-55</span></span>
-        <span class="doc-go" aria-hidden="true">Abrir</span>
-      </a>
-      <a class="doc-btn" href="documentos/relacao-nominal-dos-dirigentes.pdf" data-doc data-title="Relação nominal dos dirigentes" data-sub="Associação Beneficente Amigos da Arca de Sorocaba">
-        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
-        <span class="doc-txt"><span class="doc-title">Relação nominal dos dirigentes</span><span class="doc-sub">Associação Beneficente Amigos da Arca de Sorocaba</span></span>
-        <span class="doc-go" aria-hidden="true">Abrir</span>
-      </a>
-      <a class="doc-btn" href="documentos/prestadores-de-servico.pdf" data-doc data-title="Prestadores de serviço" data-sub="Termo de fomento PA nº 3552205.404.00000169/2026-55">
-        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
-        <span class="doc-txt"><span class="doc-title">Prestadores de serviço</span><span class="doc-sub">Termo de fomento PA nº 3552205.404.00000169/2026-55</span></span>
-        <span class="doc-go" aria-hidden="true">Abrir</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="docs-topic" id="institucional" aria-labelledby="institucional-title">
-    <div class="docs-topic-head">
-      <h2 class="docs-topic-title" id="institucional-title">Documentos institucionais</h2>
-      <span class="docs-topic-count" data-topic-label="institucional">3 documentos</span>
-    </div>
-    <p class="docs-topic-desc">Estatuto e regulamentos que orientam a associação.</p>
-    <div class="docs-grid">
-      <a class="doc-btn" href="documentos/estatuto-social.pdf" data-doc data-title="Estatuto Social" data-sub="Associação Beneficente Amigos da Arca de Sorocaba">
-        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
-        <span class="doc-txt"><span class="doc-title">Estatuto Social</span><span class="doc-sub">Associação Beneficente Amigos da Arca de Sorocaba</span></span>
-        <span class="doc-go" aria-hidden="true">Abrir</span>
-      </a>
-      <a class="doc-btn" href="documentos/regulamento-de-compras.pdf" data-doc data-title="Regulamento de Compras" data-sub="Associação Beneficente Amigos da Arca de Sorocaba">
-        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
-        <span class="doc-txt"><span class="doc-title">Regulamento de Compras</span><span class="doc-sub">Associação Beneficente Amigos da Arca de Sorocaba</span></span>
-        <span class="doc-go" aria-hidden="true">Abrir</span>
-      </a>
-      <a class="doc-btn" href="documentos/regulamento-de-contratacao-de-pessoal.pdf" data-doc data-title="Regulamento de contratação de pessoal" data-sub="Associação Beneficente Amigos da Arca de Sorocaba">
-        <span class="doc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
-        <span class="doc-txt"><span class="doc-title">Regulamento de contratação de pessoal</span><span class="doc-sub">Associação Beneficente Amigos da Arca de Sorocaba</span></span>
-        <span class="doc-go" aria-hidden="true">Abrir</span>
-      </a>
-    </div>
-  </section>
-
   <div class="portal-cta">
     <a href="https://sgts.sorocaba.sp.gov.br/portal?pagina=1&amp;pesquisar=true&amp;idAreaGestoraContratado=436&amp;ano=2026&amp;idAreaGestoraContratante=&amp;idModalidadeAjuste=&amp;statusProjeto=&amp;numeroContrato=&amp;nomeContratado=&amp;cnpjContratado=#header-ano" class="btn btn-accent" target="_blank" rel="noopener">Acesse o Portal SGTS<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
   </div>
   <div class="docs-parceria">
     <span class="docs-parceria-label">Parceria</span>
-    <img src="assets/img/logo-prefeitura.png" alt="Prefeitura de Sorocaba" width="406" height="164" loading="lazy">
+    <div class="docs-parceria-logos">
+      <img class="logo-pref" src="assets/img/logo-prefeitura.png" alt="Prefeitura de Sorocaba" width="406" height="164" loading="lazy">
+      <img class="logo-cmas" src="assets/img/logo-cmas.png" alt="Conselho Municipal de Assistência Social de Sorocaba (CMAS)" width="225" height="219" loading="lazy">
+    </div>
   </div>
 </section>
 
@@ -915,19 +1005,55 @@ html.viewer-open,html.viewer-open body{overflow:hidden}
   }
 
   // contagens dos tópicos se atualizam sozinhas quando entra documento novo
-  (function () {
-    function n(k) { return k + ' documento' + (k === 1 ? '' : 's'); }
-    var topics = document.querySelectorAll('.docs-topic'), total = 0;
-    topics.forEach(function (t) {
-      var k = t.querySelectorAll('a[data-doc]').length; total += k;
-      var chip = document.querySelector('[data-topic-count="' + t.id + '"]');
-      var label = t.querySelector('[data-topic-label]');
-      if (chip) chip.textContent = k;
-      if (label) label.textContent = n(k);
+  function plural(k) { return k + ' documento' + (k === 1 ? '' : 's'); }
+  var topics = Array.prototype.slice.call(document.querySelectorAll('.docs-topic'));
+  var totalDocs = 0;
+  topics.forEach(function (t) {
+    var k = t.querySelectorAll('a[data-doc]').length; totalDocs += k;
+    var chip = document.querySelector('[data-topic-count="' + t.id + '"]');
+    var label = t.querySelector('[data-topic-label]');
+    if (chip) chip.textContent = plural(k);
+    if (label) label.textContent = plural(k);
+  });
+  var tot = document.querySelector('[data-docs-total]');
+  if (tot) tot.textContent = plural(totalDocs) + ' em ' + topics.length + ' tópicos';
+
+  // cada tópico abre como uma tela própria (endereço com #tópico, dá para mandar o link direto)
+  var ALIAS = { equipe: 'relacoes', institucional: 'estatuto' };
+  var baseTitle = document.title;
+  var backBtn = document.getElementById('docsBack');
+  function topicFromHash() {
+    var id = decodeURIComponent(location.hash.slice(1));
+    id = ALIAS[id] || id;
+    return document.getElementById(id) && document.getElementById(id).classList.contains('docs-topic') ? id : null;
+  }
+  function render(scroll) {
+    var id = topicFromHash();
+    document.documentElement.classList.toggle('topic-view', !!id);
+    topics.forEach(function (t) { t.classList.toggle('is-active', t.id === id); });
+    var active = id && document.getElementById(id);
+    document.title = active ? active.querySelector('.docs-topic-title').textContent + ' | Transparência | ARCA Sorocaba' : baseTitle;
+    if (scroll) window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+  document.querySelectorAll('[data-topic-link]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+      e.preventDefault();
+      e.stopPropagation();
+      history.pushState(null, '', '#' + link.dataset.topicLink);
+      render(true);
+      if (backBtn) backBtn.focus({ preventScroll: true });
     });
-    var tot = document.querySelector('[data-docs-total]');
-    if (tot) tot.textContent = n(total) + ' disponíveis em ' + topics.length + ' tópicos';
-  })();
+  });
+  if (backBtn) backBtn.addEventListener('click', function () {
+    history.pushState(null, '', location.pathname + location.search);
+    render(false);
+    var menu = document.getElementById('topicos');
+    if (menu) window.scrollTo({ top: menu.getBoundingClientRect().top + window.scrollY - 110, behavior: 'instant' });
+  });
+  window.addEventListener('popstate', function () { render(true); });
+  window.addEventListener('hashchange', function () { render(true); });
+  render(!!topicFromHash());
 
   // ---------- leitor de PDF: abre o documento na própria página, com botão de baixar ----------
   var PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
