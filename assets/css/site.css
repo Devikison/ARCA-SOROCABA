@@ -233,18 +233,14 @@ html{scrollbar-color:auto;scrollbar-width:auto}
 }
 .valores{display:grid;gap:clamp(10px,1.2vw,16px)}
 .valor{overflow:hidden;display:flex;flex-direction:column}
-.valor .card-media{height:clamp(240px,27vw,400px)}
+.valor .card-media{height:clamp(230px,25vw,360px)}
 .card-body{padding:clamp(20px,2.4vw,32px)}
 .valor h3{font-size:clamp(26px,2.6vw,38px);font-weight:800;line-height:1.1;letter-spacing:-.028em;margin-bottom:8px;color:var(--blue)}
 .valor p{margin:0;max-width:34em}
 @media (min-width:900px){
-  .valores{grid-template-columns:repeat(12,minmax(0,1fr))}
-  .valor{grid-column:span 5}
-  .valor--w{grid-column:span 7}
-  .valores--id .valor{grid-column:span 6}
+  .valores{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-.valores--id{margin-bottom:clamp(10px,1.2vw,16px)}
-.valores--id .valor p{max-width:none}
+.valores .valor p{max-width:none}
 
 /* quem a ARCA acolhe */
 .acolhe{display:grid;gap:clamp(32px,4vw,64px);align-items:center;background:linear-gradient(160deg,#fff 0,var(--tint) 100%);border-radius:var(--r-xl);padding:clamp(24px,4vw,64px);box-shadow:var(--s-1);overflow:hidden}
@@ -496,7 +492,7 @@ html{scrollbar-color:auto;scrollbar-width:auto}
 }
 /* empilhamento de cards no celular: o card de trás recua enquanto o próximo sobe */
 @media (max-width:760px){
-  .stack-on>*{position:sticky;top:var(--stack-top,84px);transform-origin:50% 0;transition:box-shadow .3s;will-change:transform;box-shadow:0 -10px 30px -14px rgba(11,29,63,.28),var(--s-1)}
+  .stack-on>*{position:sticky;top:var(--stack-top,84px);transform-origin:50% 0;transition:box-shadow .3s;will-change:transform,filter;box-shadow:0 -10px 30px -14px rgba(11,29,63,.28),var(--s-1)}
   .stack-on{gap:14px}
   .stack-on>.destino{background:#14295B;border-radius:var(--r-lg);padding:10px 10px 18px;box-shadow:0 -10px 30px -12px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.1)}
   .stack-on>.destino h3,.stack-on>.destino p{padding-inline:8px}

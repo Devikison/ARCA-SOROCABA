@@ -440,22 +440,44 @@
     var pilhas = [];
     var pedido = false;
 
+    function limitar(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
     function atualizar() {
       pedido = false;
+      var vh = window.innerHeight;
       pilhas.forEach(function (itens) {
+        var n = itens.length;
+        var rects = itens.map(function (c) { return c.getBoundingClientRect(); });
+        // quanto cada card já chegou no lugar dele na pilha (0 a 1)
+        var chegada = itens.map(function (c, j) {
+          if (j === 0) return 0;
+          var curso = Math.min(itens[j - 1].offsetHeight, vh * 0.8);
+          return limitar(1 - (rects[j].top - (c._topo || 84)) / curso);
+        });
+        // depois que o último chega, a pilha toda segue afundando até sair da seção
+        var ultimo = itens[n - 1];
+        var saida = limitar(((ultimo._topo || 84) - rects[n - 1].top) / (vh * 0.55));
         itens.forEach(function (card, i) {
-          var prox = itens[i + 1];
-          if (!prox) return;
-          var a = card.getBoundingClientRect();
-          var altura = card.offsetHeight;
-          var topoProx = prox.getBoundingClientRect().top;
-          var base = a.top;
-          var p = 1 - Math.max(0, Math.min(1, (topoProx - base) / altura));
-          // cards mais antigos recuam um pouco mais conforme a pilha cresce
-          var ultimo = itens[itens.length - 1].getBoundingClientRect().top;
-          var extra = Math.max(0, Math.min(1, 1 - (ultimo - base) / (altura * (itens.length - 1 - i))));
-          var escala = 1 - p * 0.05 - extra * 0.04;
-          card.style.transform = p > 0 ? 'scale(' + escala.toFixed(4) + ')' : '';
+          var fundo = saida;
+          for (var j = i + 1; j < n; j++) fundo += chegada[j];
+          if (fundo < 0.002) {
+            card.style.transform = '';
+            card.style.filter = '';
+            card.style.clipPath = '';
+            return;
+          }
+          var escala = Math.max(0.74, 1 - fundo * 0.045);
+          var luz = Math.max(0.6, 1 - fundo * 0.08);
+          card.style.transform = 'scale(' + escala.toFixed(4) + ')';
+          card.style.filter = 'brightness(' + luz.toFixed(3) + ')';
+          // card de trás mais alto que o da frente: corta o pé para não aparecer por baixo
+          var corte = 0;
+          if (i + 1 < n) {
+            var base = Infinity;
+            for (var k = i + 1; k < n; k++) if (chegada[k] > 0) base = Math.min(base, rects[k].bottom);
+            var sobra = rects[i].top + card.offsetHeight * escala - base;
+            if (sobra > 0) corte = sobra / escala;
+          }
+          card.style.clipPath = corte > 0 ? 'inset(0 0 ' + corte.toFixed(1) + 'px 0 round ' + (card._raio || '0px') + ')' : '';
         });
       });
     }
@@ -467,7 +489,9 @@
         itens.forEach(function (card, i) {
           // card mais alto que a tela rola até o fim antes de prender
           var livre = window.innerHeight - card.offsetHeight - 16;
-          card.style.setProperty('--stack-top', Math.min(84 + i * 8, livre) + 'px');
+          card._topo = Math.min(84 + i * 10, livre);
+          card._raio = getComputedStyle(card).borderBottomLeftRadius;
+          card.style.setProperty('--stack-top', card._topo + 'px');
         });
       });
       atualizar();
@@ -486,7 +510,7 @@
           pilhas.push(itens);
         } else {
           grade.classList.remove('stack-on');
-          itens.forEach(function (c) { c.style.transform = ''; c.style.removeProperty('--stack-top'); });
+          itens.forEach(function (c) { c.style.transform = ''; c.style.filter = ''; c.style.clipPath = ''; c.style.removeProperty('--stack-top'); });
         }
       });
       medir();
