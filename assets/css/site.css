@@ -241,7 +241,10 @@ html{scrollbar-color:auto;scrollbar-width:auto}
   .valores{grid-template-columns:repeat(12,minmax(0,1fr))}
   .valor{grid-column:span 5}
   .valor--w{grid-column:span 7}
+  .valores--id .valor{grid-column:span 6}
 }
+.valores--id{margin-bottom:clamp(10px,1.2vw,16px)}
+.valores--id .valor p{max-width:none}
 
 /* quem a ARCA acolhe */
 .acolhe{display:grid;gap:clamp(32px,4vw,64px);align-items:center;background:linear-gradient(160deg,#fff 0,var(--tint) 100%);border-radius:var(--r-xl);padding:clamp(24px,4vw,64px);box-shadow:var(--s-1);overflow:hidden}
@@ -450,6 +453,10 @@ html{scrollbar-color:auto;scrollbar-width:auto}
 .faq-sign{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--tint);font-size:22px;line-height:1;color:var(--blue)}
 .faq-a{display:none;padding:0 clamp(18px,2vw,26px) 22px;margin:0;max-width:40em}
 .faq-item.is-open .faq-a{display:block}
+.faq-a p{margin:0 0 10px}
+.faq-ul{margin:0;padding-left:1.15em;display:grid;gap:8px}
+.faq-ul li{line-height:1.5}
+.faq-a a{color:var(--blue);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .pix-line{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
 .pix-line span{padding:8px 14px;border-radius:999px;background:var(--tint);font-size:15px;color:var(--body)}
 .closing{display:grid;gap:18px;justify-items:center;text-align:center}
